@@ -1,6 +1,6 @@
 {% load navigation_tags wagtailcore_tags %}
 {% for menuitem in menuitems %}
-    <li>
-        <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
     </li>
 {% endfor %}
