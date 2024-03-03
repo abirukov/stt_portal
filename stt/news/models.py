@@ -1,3 +1,7 @@
+from django.db import models
+from wagtail.admin.panels import FieldPanel
+from wagtail.blocks import RichTextBlock
+from wagtail.fields import StreamField
 from wagtail.models import Page
 
 
@@ -7,4 +11,23 @@ class NewsSectionPage(Page):
 
 
 class NewsPage(Page):
-    pass
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="News image",
+    )
+    body = StreamField([
+            ('text', RichTextBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("image"),
+        FieldPanel("body"),
+    ]
+    subpage_types = []

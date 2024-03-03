@@ -1997,3 +1997,8 @@ input[type='radio'] {
   white-space: nowrap;
   border: 0;
 }
+
+
+.news__text__container {
+    padding: 150px 0 100px;
+}

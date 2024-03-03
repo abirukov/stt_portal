@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags news_tags wagtailcore_tags %}
+
+{% block content %}
+    {% include "base/include/header-hero.html" %}
+    <div class="container news__container">
+        <div class="news__grid">
+            {% news_section %}
+        </div>
+    </div>
+{% endblock content %}

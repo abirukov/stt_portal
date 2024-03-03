@@ -1,0 +1,7 @@
+{% load wagtailimages_tags wagtailcore_tags%}
+
+{% for one_news in news %}
+    <a href="{% pageurl one_news %}">
+        <p class="title">{{ one_news.title }}</p>
+    </a>
+{% endfor %}
