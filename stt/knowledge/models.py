@@ -1,3 +1,6 @@
+from wagtail.admin.panels import FieldPanel
+from wagtail.blocks import RichTextBlock
+from wagtail.fields import StreamField
 from wagtail.models import Page
 
 
@@ -7,4 +10,14 @@ class KnowledgeSectionPage(Page):
 
 
 class KnowledgePage(Page):
-    pass
+    body = StreamField([
+            ('text', RichTextBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+    ]
+    subpage_types = []

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags knowledge_tags wagtailcore_tags %}
+
+{% block content %}
+    {% include "base/include/header-hero.html" %}
+    <div class="container knowledge__container">
+        <div class="knowledge__grid">
+            {% knowledge_section %}
+        </div>
+    </div>
+{% endblock content %}

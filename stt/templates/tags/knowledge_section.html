@@ -1,0 +1,7 @@
+{% load wagtailimages_tags wagtailcore_tags%}
+
+{% for one_knowledge in knowledge %}
+    <a href="{% pageurl one_knowledge %}">
+        <p class="title">{{ one_knowledge.title }}</p>
+    </a>
+{% endfor %}
