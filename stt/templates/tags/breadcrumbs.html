@@ -10,7 +10,7 @@
                             {% if forloop.last %}
                                 <li aria-current="page">{{ ancestor }}</li>
                             {% else %}
-                                <li><a href="{% pageurl ancestor %}">{% if forloop.first %}Home{% else %}{{ ancestor }}{% endif %}</a>
+                                <li><a href="{% pageurl ancestor %}">{% if forloop.first %}Главная{% else %}{{ ancestor }}{% endif %}</a>
                                     {% include "includes/chevron-icon.html" with class="breadcrumb__chevron-icon" %}</li>
                             {% endif %}
                         {% endfor %}

@@ -113,3 +113,4 @@ venv.bak/
 /static/
 /test.py
 /poetry.lock
+/media/
