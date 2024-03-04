@@ -1,6 +1,5 @@
 from django.db import models
-from wagtail.admin.panels import MultiFieldPanel, FieldPanel
-from wagtail.fields import StreamField, RichTextField
+from wagtail.fields import StreamField
 from wagtail.models import Page
 
 from stt.base.blocks import BaseStreamBlock
