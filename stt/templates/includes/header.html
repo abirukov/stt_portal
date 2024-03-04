@@ -1,4 +1,4 @@
-{% load navigation_tags wagtailcore_tags wagtailimages_tags static%}
+{% load navigation_tags wagtailcore_tags wagtailimages_tags static %}
 
 <header class="header-area">
     <div class="main-header d-none d-lg-block">
@@ -13,7 +13,11 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="login-register text-center">
-                            <a href="#">Login/Register</a>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'account_logout' %}">{{ user.username }}</a>
+                            {% else %}
+                                <a href="{% url 'account_login' %}">Вход</a>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -37,7 +41,7 @@
                         <!-- logo area start -->
                         <div class="brand-logo">
                             <a href="{{ request.site.root_url }}">
-                                <img src="{% static 'img/logo/logo.png'%}" alt="brand logo">
+                                <img src="{% static 'img/logo/logo.png' %}" alt="brand logo">
                             </a>
                         </div>
                         <!-- logo area end -->
