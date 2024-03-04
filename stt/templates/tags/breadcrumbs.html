@@ -1,22 +1,36 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags static %}
 
 {% if ancestors %}
-    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+{#    {% image page.image width-1920 height-387 as page_banner %}#}
+{#    <div class="breadcrumb-area bg-img" data-bg="{{ page_banner.url }}">#}
+    <div class="breadcrumb-area bg-img" data-bg="{% static 'img/banner/page-banner.jpg' %}">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <ol class="breadcrumb">
-                        {% for ancestor in ancestors %}
-                            {% if forloop.last %}
-                                <li aria-current="page">{{ ancestor }}</li>
-                            {% else %}
-                                <li><a href="{% pageurl ancestor %}">{% if forloop.first %}Главная{% else %}{{ ancestor }}{% endif %}</a>
-                                    {% include "includes/chevron-icon.html" with class="breadcrumb__chevron-icon" %}</li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
+                <div class="col-12">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <h2 class="breadcrumb-title">{{ page.title }}</h2>
+                            <ul class="breadcrumb">
+                                {% for ancestor in ancestors %}
+                                    {% if forloop.last %}
+                                        <li class="breadcrumb-item active" aria-current="page">{{ ancestor }}</li>
+                                    {% else %}
+                                        <li class="breadcrumb-item">
+                                            <a href="{% pageurl ancestor %}">
+                                                {% if forloop.first %}
+                                                    Главная
+                                                {% else %}
+                                                    {{ ancestor }}
+                                                {% endif %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
 {% endif %}

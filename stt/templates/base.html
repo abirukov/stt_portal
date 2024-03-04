@@ -16,7 +16,7 @@
         {% endblock %}
     </title>
     <meta name="description" content="
-            
+
             {% block search_description %}{% if page.search_description %}{{ page.search_description }}{% endif %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,17 +28,17 @@
     <link href="https://fonts.googleapis.com/css?family=Sarabun:300,300i,400,400i,500,600,700,800&display=swap"
           rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="static/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css'%}">
     <!-- Font-awesome CSS -->
-    <link rel="stylesheet" href="static/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css'%}">
     <!-- Slick slider css -->
-    <link rel="stylesheet" href="static/css/plugins/slick.min.css">
+    <link rel="stylesheet" href="{% static 'css/plugins/slick.min.css'%}">
     <!-- Odometer css -->
-    <link rel="stylesheet" href="static/css/plugins/odometer.min.css">
+    <link rel="stylesheet" href="{% static 'css/plugins/odometer.min.css'%}">
     <!-- animate css -->
-    <link rel="stylesheet" href="static/css/plugins/animate.css">
+    <link rel="stylesheet" href="{% static 'css/plugins/animate.css'%}">
     <!-- main style css -->
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
 </head>
 
 <body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
@@ -63,30 +63,30 @@
 
 {% footer_tag %}
 
-<script src="static/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="{% static 'js/vendor/modernizr-3.6.0.min.js' %}"></script>
 <!-- jQuery JS -->
-<script src="static/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="{% static 'js/vendor/jquery-3.3.1.min.js' %}"></script>
 <!-- Popper JS -->
-<script src="static/js/vendor/popper.min.js"></script>
+<script src="{% static 'js/vendor/popper.min.js' %}"></script>
 <!-- Bootstrap JS -->
-<script src="static/js/vendor/bootstrap.min.js"></script>
+<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
 <!-- wow js -->
-<script src="static/js/plugins/wow.min.js"></script>
+<script src="{% static 'js/plugins/wow.min.js' %}"></script>
 <!-- slick Slider JS -->
-<script src="static/js/plugins/slick.min.js"></script>
+<script src="{% static 'js/plugins/slick.min.js' %}"></script>
 <!-- odometer js -->
-<script src="static/js/plugins/odometer.min.js"></script>
+<script src="{% static 'js/plugins/odometer.min.js' %}"></script>
 <!-- appear js -->
-<script src="static/js/plugins/appear.min.js"></script>
+<script src="{% static 'js/plugins/appear.min.js' %}"></script>
 <!-- mailchimp active js -->
-<script src="static/js/plugins/ajaxchimp.js"></script>
+<script src="{% static 'js/plugins/ajaxchimp.js' %}"></script>
 <!-- waypoint js  -->
-<script src="static/js/plugins/waypoints.min.js"></script>
+<script src="{% static 'js/plugins/waypoints.min.js' %}"></script>
 <!-- google map api -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2D8wrWMY3XZnuHO6C31uq90JiuaFzGws"></script>
 <!-- google map active js -->
-<script src="static/js/plugins/google-map.js"></script>
+<script src="{% static 'js/plugins/google-map.js' %}"></script>
 <!-- Main JS -->
-<script src="static/js/main.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
