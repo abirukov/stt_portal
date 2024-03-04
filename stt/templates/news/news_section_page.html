@@ -2,10 +2,11 @@
 {% load wagtailimages_tags news_tags wagtailcore_tags %}
 
 {% block content %}
-    {% include "base/include/header-hero.html" %}
-    <div class="container news__container">
-        <div class="news__grid">
-            {% news_section %}
+    <section class="blog-area section-padding">
+        <div class="container">
+            <div class="row mtn-40">
+                {% news_section %}
+            </div>
         </div>
-    </div>
+    </section>
 {% endblock content %}
