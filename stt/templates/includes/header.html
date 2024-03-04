@@ -1,4 +1,4 @@
-{% load navigation_tags wagtailcore_tags%}
+{% load navigation_tags wagtailcore_tags wagtailimages_tags static%}
 
 <header class="header-area">
     <div class="main-header d-none d-lg-block">
@@ -36,7 +36,9 @@
                     <div class="col-lg-3">
                         <!-- logo area start -->
                         <div class="brand-logo">
-                            <a href="{{ request.site.root_url }}">НИИ СТТ</a>
+                            <a href="{{ request.site.root_url }}">
+                                <img src="{% static 'img/logo/logo.png'%}" alt="brand logo">
+                            </a>
                         </div>
                         <!-- logo area end -->
                     </div>
