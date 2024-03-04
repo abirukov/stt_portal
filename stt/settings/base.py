@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "stt.knowledge",
     "stt.news",
     "stt.search",
+    "stt.service_app",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
