@@ -1,14 +1,36 @@
-{% load wagtailimages_tags wagtailcore_tags%}
+{% load wagtailimages_tags wagtailcore_tags %}
 
 {% for gallery in galleries %}
-    <a href="{% pageurl gallery %}">
-        <div class="picture-card">
-            <figure class="picture-card__image">
-                {% picture gallery.image format-{avif,webp,jpeg} fill-{300x200-c75,645x480-c75} sizes="(max-width: 768px)150px,30vw" loading="lazy" %}
-                <div class="picture-card__contents">
-                    <p class="picture-card__title">{{ gallery.title }}</p>
-                </div>
-            </figure>
+    <div class="col-lg-4 col-md-6">
+        <div class="blog-item mt-40">
+            <div class="blog-thumb">
+                <a href="{% pageurl gallery %}">
+                    {% image gallery.image width-370 height-250 as blog_image %}
+                    <img src="{{ blog_image.url }}" alt="blog">
+                </a>
+            </div>
+            <div class="blog-content">
+                <h3 class="blog-title">
+                    <a href="{% pageurl gallery %}">{{ gallery.title }}</a>
+                </h3>
+                <p>Ideas es to obtain pain of itself, because it is pain, but because occasionallyght ocean he Internet
+                    tend
+                    to a chunks as necessary with some of themoment</p>
+            </div>
         </div>
-    </a>
+    </div>
+
 {% endfor %}
+
+<!-- start pagination area -->
+<div class="col-12">
+    <div class="paginatoin-area text-center mt-40">
+        <ul class="pagination-box">
+            <li><a class="previous" href="#"><i class="fa fa-angle-left"></i></a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a class="next" href="#"><i class="fa fa-angle-right"></i></a></li>
+        </ul>
+    </div>
+</div>

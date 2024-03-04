@@ -1,12 +1,34 @@
-{% load wagtailimages_tags %}
+{% load wagtailimages_tags wagtailcore_tags %}
 
 {% for img in images %}
-    <div class="picture-card">
-        <figure class="picture-card__image">
-            {% picture img format-{avif,webp,jpeg} fill-{300x200-c75,645x480-c75} sizes="(max-width: 768px)150px,30vw" loading="lazy" %}
-            <div class="picture-card__contents">
-                <p class="picture-card__title">{{ img.title }}</p>
+    {% image img original as image_original %}
+    {% image img width-370 height-250 as blog_image %}
+    <div class="col-lg-4 col-md-6">
+        <div class="blog-item mt-40">
+            <div class="blog-thumb">
+                <a href="{{ image_original.url }}">                    
+                    <img src="{{ blog_image.url }}" alt="blog">
+                </a>
             </div>
-        </figure>
+            <div class="blog-content">
+                <h3 class="blog-title">
+                    <a href="{{ image_original.url }}">{{ img.title }}</a>
+                </h3>
+            </div>
+        </div>
     </div>
+
 {% endfor %}
+
+<!-- start pagination area -->
+<div class="col-12">
+    <div class="paginatoin-area text-center mt-40">
+        <ul class="pagination-box">
+            <li><a class="previous" href="#"><i class="fa fa-angle-left"></i></a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a class="next" href="#"><i class="fa fa-angle-right"></i></a></li>
+        </ul>
+    </div>
+</div>
