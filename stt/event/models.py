@@ -1,4 +1,7 @@
+from django.db import models
 from wagtail.models import Page
+
+from stt.base.models import SectionPage
 
 
 class EventPage(Page):
@@ -9,7 +12,7 @@ class EventPage(Page):
         verbose_name_plural = "Страницы событий"
 
 
-class EventSectionPage(Page):
+class EventSectionPage(SectionPage):
     max_count = 1
     subpage_types = ["event.EventPage"]
 

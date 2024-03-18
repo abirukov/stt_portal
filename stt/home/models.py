@@ -9,8 +9,11 @@ from stt.base.blocks import BaseStreamBlock
 class HomePage(Page):
     max_count = 1
     subpage_types = [
+        "event.EventSectionPage",
         "gallery.GallerySectionPage",
+        "help.HelpSectionPage",
         "news.NewsSectionPage",
+        "technology.TechnologySectionPage",
     ]
 
     image = models.ForeignKey(

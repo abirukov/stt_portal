@@ -4,14 +4,7 @@ from wagtail.blocks import RichTextBlock
 from wagtail.fields import StreamField
 from wagtail.models import Page
 
-
-class NewsSectionPage(Page):
-    max_count = 1
-    subpage_types = ["news.NewsPage"]
-
-    class Meta:
-        verbose_name = "Раздела новостей"
-        verbose_name_plural = "Разделы новостей"
+from stt.base.models import SectionPage
 
 
 class NewsPage(Page):
@@ -39,3 +32,12 @@ class NewsPage(Page):
     class Meta:
         verbose_name = "Страница новости"
         verbose_name_plural = "Страницы новостей"
+
+
+class NewsSectionPage(SectionPage):
+    max_count = 1
+    subpage_types = ["news.NewsPage"]
+
+    class Meta:
+        verbose_name = "Раздела новостей"
+        verbose_name_plural = "Разделы новостей"
