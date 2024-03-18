@@ -72,6 +72,8 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
 ]
 
 ROOT_URLCONF = "stt.urls"
@@ -97,6 +99,7 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+    'django_remote_auth_ldap.backend.RemoteUserLDAPBackend',
 ]
 
 LOGIN_REDIRECT_URL = '/'
@@ -199,3 +202,4 @@ WAGTAILSEARCH_BACKENDS = {
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
+DRAL_CHECK_DOMAIN = False
