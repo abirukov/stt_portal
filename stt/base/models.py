@@ -19,11 +19,3 @@ class Footer(models.Model):
 
     def __str__(self) -> str:
         return "Футер"
-
-
-class SectionPage(Page):
-    menu_order_index = models.IntegerField(verbose_name="Индекс сортировки", default=-1)
-
-    class Meta:
-        abstract = True
-

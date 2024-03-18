@@ -1,7 +1,5 @@
 from wagtail.models import Page
 
-from stt.base.models import SectionPage
-
 
 class HelpPage(Page):
     subpage_types = []
@@ -11,7 +9,7 @@ class HelpPage(Page):
         verbose_name_plural = "Стандартные справочные страницы"
 
 
-class HelpSectionPage(SectionPage):
+class HelpSectionPage(Page):
     max_count = 1
     subpage_types = ["help.HelpPage"]
 

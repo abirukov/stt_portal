@@ -4,7 +4,7 @@ from wagtail.blocks import RichTextBlock
 from wagtail.fields import StreamField
 from wagtail.models import Page, Collection
 
-from stt.base.models import SectionPage
+from stt.base.models import Page
 
 
 class GalleryPage(Page):
@@ -50,7 +50,7 @@ class GalleryPage(Page):
         verbose_name_plural = "Страницы галереи"
 
 
-class GallerySectionPage(SectionPage):
+class GallerySectionPage(Page):
     max_count = 1
     subpage_types = ["gallery.GalleryPage"]
 

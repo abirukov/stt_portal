@@ -4,8 +4,6 @@ from wagtail.blocks import RichTextBlock
 from wagtail.fields import StreamField
 from wagtail.models import Page
 
-from stt.base.models import SectionPage
-
 
 class NewsPage(Page):
     image = models.ForeignKey(
@@ -34,7 +32,7 @@ class NewsPage(Page):
         verbose_name_plural = "Страницы новостей"
 
 
-class NewsSectionPage(SectionPage):
+class NewsSectionPage(Page):
     max_count = 1
     subpage_types = ["news.NewsPage"]
 
