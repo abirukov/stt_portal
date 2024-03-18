@@ -9,6 +9,10 @@ class NewsSectionPage(Page):
     max_count = 1
     subpage_types = ["news.NewsPage"]
 
+    class Meta:
+        verbose_name = "Раздела новостей"
+        verbose_name_plural = "Разделы новостей"
+
 
 class NewsPage(Page):
     image = models.ForeignKey(
@@ -31,3 +35,7 @@ class NewsPage(Page):
         FieldPanel("body"),
     ]
     subpage_types = []
+
+    class Meta:
+        verbose_name = "Страница новости"
+        verbose_name_plural = "Страницы новостей"

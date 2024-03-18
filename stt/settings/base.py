@@ -30,12 +30,13 @@ CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in config.allowed_hosts]
 
 INSTALLED_APPS = [
     "stt.base",
+    "stt.event",
     "stt.gallery",
+    "stt.help",
     "stt.home",
-    "stt.knowledge",
     "stt.news",
     "stt.search",
-    "stt.service_app",
+    "stt.technology",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",

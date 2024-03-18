@@ -11,7 +11,6 @@ class HomePage(Page):
     subpage_types = [
         "gallery.GallerySectionPage",
         "news.NewsSectionPage",
-        "knowledge.KnowledgeSectionPage",
     ]
 
     image = models.ForeignKey(

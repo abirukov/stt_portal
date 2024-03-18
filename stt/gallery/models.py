@@ -43,7 +43,15 @@ class GalleryPage(Page):
 
     subpage_types = []
 
+    class Meta:
+        verbose_name = "Страница галереи"
+        verbose_name_plural = "Страницы галереи"
+
 
 class GallerySectionPage(Page):
     max_count = 1
     subpage_types = ["gallery.GalleryPage"]
+
+    class Meta:
+        verbose_name = "Раздел галереи"
+        verbose_name_plural = "Разделы галереи"
