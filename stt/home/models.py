@@ -1,9 +1,6 @@
 from django.db import models
 from wagtail.admin.panels import FieldPanel
-from wagtail.fields import StreamField
 from wagtail.models import Page
-
-from stt.base.blocks import BaseStreamBlock
 
 
 class HomePage(Page):
@@ -30,18 +27,9 @@ class HomePage(Page):
         null=True,
     )
 
-    # Body section of the HomePage
-    body = StreamField(
-        BaseStreamBlock(),
-        verbose_name="Home content block",
-        blank=True,
-        use_json_field=True,
-    )
-
     content_panels = Page.content_panels + [
         FieldPanel("image"),
         FieldPanel("hero_text"),
-        FieldPanel("body"),
     ]
 
     def __str__(self) -> str:
