@@ -1,12 +1,43 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags gallery_tags %}
-
+{% load static wagtailcore_tags wagtailimages_tags wagtailsimplegallery_tags %}
 {% block content %}
-        <section class="blog-area section-padding">
-        <div class="container">
-            <div class="row mtn-40">
-                {% gallery page.collection %}
-            </div>
+  <div class="container gallery-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        {% if page.intro_title %}<p class="intro-content">{{ page.intro_title }}</p>{% endif %}
+        {% if page.intro_text %}{{ page.intro_text|richtext }}{% endif %}
+      </div>
+    </div>
+  </div>
+
+    {% include 'gallery/simple_gallery.html' %}
+    
+    {% if gallery_images.has_next or gallery_images.has_previous %}
+    <div class="container">
+      <div class="gallery-pagination-container row">
+        <div class="col-sm-2">
+          {% if gallery_images.has_previous %}
+          <a href="?page={{ gallery_images.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">&lt;&lt; Назад</a>
+          {% endif %}
         </div>
-    </section>
-{% endblock content %}
+        <div class="col-sm-8 text-center">
+          <ul class="gallery-pagination">
+          {% for page in gallery_images.paginator.page_range %}
+            <li class="gallery-pagination-item {% if gallery_images.number == page  %}active{% endif %}">
+              <a class="{% if gallery_images.number == page  %}active{% endif %}" href="?page={{ page }}">{{ page }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-2 text-right">
+          {% if gallery_images.has_next %}
+          <a href="?page={{ gallery_images.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">Далее &gt;&gt;</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
