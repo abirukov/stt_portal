@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+    <section class="blog-area section-padding">
+        <div class="container">
+            {% include_block page.body %}
+            <div class="row mtn-40">
+            </div>
+        </div>
+    </section>
+{% endblock content %}
