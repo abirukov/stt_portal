@@ -56,10 +56,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django_extensions',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    "django_extensions",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
 ]
 
 MIDDLEWARE = [
@@ -73,8 +73,8 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     "allauth.account.middleware.AccountMiddleware",
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.RemoteUserMiddleware',
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.auth.middleware.RemoteUserMiddleware",
 ]
 
 ROOT_URLCONF = "stt.urls"
@@ -98,12 +98,12 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-    'django_remote_auth_ldap.backend.RemoteUserLDAPBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+    "django_remote_auth_ldap.backend.RemoteUserLDAPBackend",
 ]
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
 
 WSGI_APPLICATION = "stt.wsgi.application"
 
@@ -190,14 +190,14 @@ STORAGES = {
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "stt"
+WAGTAIL_SITE_NAME = "СТТ"
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
 WAGTAILSEARCH_BACKENDS = {
     "default": {
         "BACKEND": "wagtail.search.backends.database",
-    }
+    },
 }
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -

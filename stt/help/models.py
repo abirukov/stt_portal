@@ -2,7 +2,7 @@ from wagtail.models import Page
 
 
 class HelpPage(Page):
-    subpage_types = []
+    subpage_types: list[str] = []
 
     class Meta:
         verbose_name = "Стандартная справочная страница"
@@ -11,7 +11,7 @@ class HelpPage(Page):
 
 class HelpSectionPage(Page):
     max_count = 1
-    subpage_types = ["help.HelpPage"]
+    subpage_types: list[str] = ["help.HelpPage"]
 
     class Meta:
         verbose_name = "Раздел справки"

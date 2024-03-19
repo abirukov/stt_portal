@@ -25,7 +25,9 @@ class HomePage(Page):
         help_text="Homepage image",
     )
     hero_text = models.CharField(
-        max_length=255, help_text="Write an introduction for the bakery", null=True,
+        max_length=255,
+        help_text="Write an introduction for the bakery",
+        null=True,
     )
 
     # Body section of the HomePage
@@ -42,5 +44,5 @@ class HomePage(Page):
         FieldPanel("body"),
     ]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title

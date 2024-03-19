@@ -1,11 +1,4 @@
-from wagtail.blocks import (
-    CharBlock,
-    ChoiceBlock,
-    RichTextBlock,
-    StreamBlock,
-    StructBlock,
-    TextBlock,
-)
+from wagtail.blocks import CharBlock, ChoiceBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -68,7 +61,8 @@ class BaseStreamBlock(StreamBlock):
 
     heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(
-        icon="pilcrow", template="blocks/paragraph_block.html"
+        icon="pilcrow",
+        template="blocks/paragraph_block.html",
     )
     image_block = ImageBlock()
     block_quote = BlockQuote()

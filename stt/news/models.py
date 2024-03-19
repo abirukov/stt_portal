@@ -14,8 +14,9 @@ class NewsPage(Page):
         related_name="+",
         help_text="News image",
     )
-    body = StreamField([
-            ('text', RichTextBlock()),
+    body = StreamField(
+        [
+            ("text", RichTextBlock()),
         ],
         null=True,
         blank=True,
@@ -25,7 +26,7 @@ class NewsPage(Page):
         FieldPanel("image"),
         FieldPanel("body"),
     ]
-    subpage_types = []
+    subpage_types: list[str] = []
 
     class Meta:
         verbose_name = "Страница новости"
@@ -34,7 +35,7 @@ class NewsPage(Page):
 
 class NewsSectionPage(Page):
     max_count = 1
-    subpage_types = ["news.NewsPage"]
+    subpage_types: list[str] = ["news.NewsPage"]
 
     class Meta:
         verbose_name = "Раздела новостей"

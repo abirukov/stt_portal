@@ -2,9 +2,7 @@ from django.db import models
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import RichTextBlock
 from wagtail.fields import StreamField
-from wagtail.models import Page, Collection
-
-from stt.base.models import Page
+from wagtail.models import Collection, Page
 
 
 class GalleryPage(Page):
@@ -23,8 +21,9 @@ class GalleryPage(Page):
         related_name="+",
         help_text="Landscape mode only; horizontal width between 1000px and " "3000px.",
     )
-    body = StreamField([
-            ('text', RichTextBlock()),
+    body = StreamField(
+        [
+            ("text", RichTextBlock()),
         ],
         null=True,
         blank=True,
@@ -43,7 +42,7 @@ class GalleryPage(Page):
         FieldPanel("collection"),
     ]
 
-    subpage_types = []
+    subpage_types: list[str] = []
 
     class Meta:
         verbose_name = "Страница галереи"

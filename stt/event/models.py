@@ -2,7 +2,7 @@ from wagtail.models import Page
 
 
 class EventPage(Page):
-    subpage_types = []
+    subpage_types: list[str] = []
 
     class Meta:
         verbose_name = "Страница события"
