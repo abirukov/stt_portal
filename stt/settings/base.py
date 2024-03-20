@@ -56,10 +56,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
     "django_extensions",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "allauth.usersessions",
     "wagtailmedia",
 ]
 
@@ -76,6 +78,7 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.auth.middleware.RemoteUserMiddleware",
+    "allauth.usersessions.middleware.UserSessionsMiddleware",
 ]
 
 ROOT_URLCONF = "stt.urls"
@@ -205,3 +208,4 @@ WAGTAILSEARCH_BACKENDS = {
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
 DRAL_CHECK_DOMAIN = False
+USERSESSIONS_TRACK_ACTIVITY = True
