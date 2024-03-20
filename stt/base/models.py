@@ -2,12 +2,48 @@ from django.db import models
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import RichTextBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.fields import StreamField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
+from wagtail.snippets.models import register_snippet
 from wagtailmedia.blocks import AudioChooserBlock
 
 from stt.base.blocks import ImageBlock, SttVideoChooserBlock
 from stt.base.rich_text_features import ALL_WITHOUT_FILES
+
+
+@register_snippet
+class Holiday(models.Model):
+    title = models.CharField(
+        verbose_name="Название",
+        max_length=255,
+        help_text="Введите название праздника",
+    )
+    congratulatory_text = RichTextField(
+        verbose_name="Текст поздравления",
+        help_text="Введите текст поздравления",
+    )
+    start_date = models.DateField(
+        null=False,
+        verbose_name="Дата начала поздравления",
+        help_text="Выберите дату начала поздравления",
+    )
+    end_date = models.DateField(
+        verbose_name="Дата окончания поздравления",
+        help_text="Выберите дату окончания поздравления(если праздник однодневный необязательно)",
+    )
+    panels = [
+        FieldPanel("title"),
+        FieldPanel("congratulatory_text"),
+        FieldPanel("start_date"),
+        FieldPanel("end_date"),
+    ]
+
+    class Meta:
+        verbose_name = "Праздник"
+        verbose_name_plural = "Праздники"
+
+    def __str__(self) -> str:
+        return "Праздник"
 
 
 class StandardPage(Page):
