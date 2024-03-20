@@ -2,29 +2,12 @@ from django.db import models
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import RichTextBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.fields import RichTextField, StreamField
+from wagtail.fields import StreamField
 from wagtail.models import Page
-from wagtail.snippets.models import register_snippet
 from wagtailmedia.blocks import AudioChooserBlock
 
 from stt.base.blocks import ImageBlock, SttVideoChooserBlock
 from stt.base.rich_text_features import ALL_WITHOUT_FILES
-
-
-@register_snippet
-class Footer(models.Model):
-    class Meta:
-        verbose_name = "Футер"
-        verbose_name_plural = "Футеры"
-
-    body = RichTextField()
-
-    panels = [
-        FieldPanel("body"),
-    ]
-
-    def __str__(self) -> str:
-        return "Футер"
 
 
 class StandardPage(Page):

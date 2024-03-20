@@ -8,7 +8,7 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin
 from wagtail.fields import RichTextField
 from wagtail.images import get_image_model
-from wagtail.images.models import Image
+from wagtail.images.models import ImageQuerySet
 from wagtail.models import Page
 
 IMAGE_ORDER_TYPES = (
@@ -100,7 +100,7 @@ class GallerySectionPage(Page):
 def get_gallery_images(
     collection: Collection,
     page: GalleryPage | None = None,
-):
+) -> ImageQuerySet:
     images = get_image_model().objects.filter(collection__name=collection)
     if page:
         if page.order_images_by == 1:

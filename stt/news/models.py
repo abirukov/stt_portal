@@ -1,14 +1,7 @@
-from django.db import models
-from wagtail.admin.panels import FieldPanel
-from wagtail.blocks import RichTextBlock
-from wagtail.fields import StreamField
-from wagtail.models import Page
-
-from stt.base.models import StandardPage, SectionPage
+from stt.base.models import SectionPage, StandardPage
 
 
 class NewsPage(StandardPage):
-
     class Meta:
         verbose_name = "Страница новости"
         verbose_name_plural = "Страницы новостей"

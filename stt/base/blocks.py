@@ -1,7 +1,10 @@
+from typing import Any
+
 from wagtail.blocks import CharBlock, RegexBlock, StreamBlock, StructBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import VideoChooserBlock
+from wagtailmedia.models import Media
 
 from stt.base.utils import format_video_html
 
@@ -100,7 +103,7 @@ class DocumentStreamBlock(StreamBlock):
 
 
 class SttVideoChooserBlock(VideoChooserBlock):
-    def render_basic(self, value, context=None) -> str:
+    def render_basic(self, value: Media, context: Any = None) -> str:
         if not value:
             return ""
 

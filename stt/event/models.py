@@ -1,10 +1,7 @@
-from wagtail.models import Page
-
-from stt.base.models import StandardPage, SectionPage
+from stt.base.models import SectionPage, StandardPage
 
 
 class EventPage(StandardPage):
-
     class Meta:
         verbose_name = "Страница события"
         verbose_name_plural = "Страницы событий"
