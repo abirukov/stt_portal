@@ -1,4 +1,4 @@
-{% load navigation_tags static wagtailuserbar base_tags %}
+{% load navigation_tags static wagtailuserbar %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -64,7 +64,9 @@
 </div>
 <hr>
 
-{% footer_tag %}
+{% block footer %}
+    {% include "includes/footer.html" %}
+{% endblock footer %}
 
 <script src="{% static 'js/vendor/modernizr-3.6.0.min.js' %}"></script>
 <!-- jQuery JS -->
