@@ -1,6 +1,9 @@
 from wagtail.blocks import CharBlock, RegexBlock, StreamBlock, StructBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.blocks import ImageChooserBlock
+from wagtailmedia.blocks import VideoChooserBlock
+
+from stt.base.utils import format_video_html
 
 
 class ImageBlock(StructBlock):
@@ -94,3 +97,14 @@ class DocumentStreamBlock(StreamBlock):
     class Meta:
         icon = "doc-full"
         label = "Блок документа"
+
+
+class SttVideoChooserBlock(VideoChooserBlock):
+    def render_basic(self, value, context=None) -> str:
+        if not value:
+            return ""
+
+        if value.type != self.media_type:
+            return ""
+
+        return format_video_html(value)

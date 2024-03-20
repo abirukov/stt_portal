@@ -1,16 +1,16 @@
 from wagtail.models import Page
 
+from stt.base.models import StandardPage, SectionPage
 
-class EventPage(Page):
-    subpage_types: list[str] = []
+
+class EventPage(StandardPage):
 
     class Meta:
         verbose_name = "Страница события"
         verbose_name_plural = "Страницы событий"
 
 
-class EventSectionPage(Page):
-    max_count = 1
+class EventSectionPage(SectionPage):
     subpage_types = ["event.EventPage"]
 
     class Meta:

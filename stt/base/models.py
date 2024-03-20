@@ -5,9 +5,9 @@ from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.snippets.models import register_snippet
-from wagtailmedia.blocks import AudioChooserBlock, VideoChooserBlock
+from wagtailmedia.blocks import AudioChooserBlock
 
-from stt.base.blocks import ImageBlock
+from stt.base.blocks import ImageBlock, SttVideoChooserBlock
 from stt.base.rich_text_features import ALL_WITHOUT_FILES
 
 
@@ -49,7 +49,7 @@ class StandardPage(Page):
                 ),
             ),
             ("audio", AudioChooserBlock(label="Аудио")),
-            ("video", VideoChooserBlock(label="Видео")),
+            ("video", SttVideoChooserBlock(label="Видео")),
         ],
         null=True,
         blank=True,
