@@ -1,6 +1,11 @@
+from typing import Any
+
+from django.core.handlers.wsgi import WSGIRequest
 from django.db import models
+from django.db.models import QuerySet
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import RichTextBlock
+from wagtail.contrib.routable_page.models import RoutablePageMixin
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
@@ -44,6 +49,31 @@ class Holiday(models.Model):
 
     def __str__(self) -> str:
         return "Праздник"
+
+
+class PaginatedPage(RoutablePageMixin, Page):
+    elements_per_page = models.IntegerField(
+        default=12,
+        verbose_name="Количество элементов на странице",
+        help_text="Сколько элементов будет отображаться на странице",
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("elements_per_page"),
+    ]
+
+    def get_context(
+        self,
+        request: WSGIRequest,
+        *args: Any,
+        **kwargs: Any,
+    ) -> dict[str, Page]:
+        context = super(PaginatedPage, self).get_context(request)
+        context["elements"] = QuerySet()
+        return context
+
+    class Meta:
+        abstract = True
 
 
 class StandardPage(Page):

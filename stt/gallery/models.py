@@ -3,21 +3,18 @@ from typing import Any, Collection
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel
-from wagtail.contrib.routable_page.models import RoutablePageMixin
 from wagtail.fields import RichTextField
 from wagtail.images import get_image_model
-from wagtail.images.models import ImageQuerySet
 from wagtail.models import Page
+from wagtail.search import index
 
-IMAGE_ORDER_TYPES = (
-    (1, "Image title"),
-    (2, "Newest image first"),
-)
+from stt.base.models import PaginatedPage
 
 
-class GalleryPage(RoutablePageMixin, Page):
+class GalleryPage(PaginatedPage):
     subpage_types: list[str] = []
     intro_title = models.CharField(
         verbose_name=_("Intro title"),
@@ -39,30 +36,15 @@ class GalleryPage(RoutablePageMixin, Page):
         related_name="+",
         help_text=_("Show images in this collection in the gallery view."),
     )
-    images_per_page = models.IntegerField(
-        default=8,
-        verbose_name=_("Images per page"),
-        help_text=_("How many images there should be on one page."),
-    )
-    use_lightbox = models.BooleanField(
-        verbose_name=_("Use lightbox"),
-        default=True,
-        help_text=_("Use lightbox to view larger images when clicking the thumbnail."),
-    )
-    order_images_by = models.IntegerField(choices=IMAGE_ORDER_TYPES, default=1)
-
     content_panels = Page.content_panels + [
-        FieldPanel("intro_title", classname="full title"),
-        FieldPanel("intro_text", classname="full title"),
         FieldPanel("collection"),
-        FieldPanel("images_per_page", classname="full title"),
-        FieldPanel("use_lightbox"),
-        FieldPanel("order_images_by"),
+        FieldPanel("intro_title"),
+        FieldPanel("intro_text"),
     ]
-
-    @property
-    def images(self) -> Collection:
-        return get_gallery_images(self.collection.name, self)
+    search_fields = Page.search_fields + [
+        index.SearchField("intro_title"),
+        index.SearchField("intro_text"),
+    ]
 
     def get_context(
         self,
@@ -70,17 +52,17 @@ class GalleryPage(RoutablePageMixin, Page):
         *args: Any,
         **kwargs: Any,
     ) -> dict[str, Page]:
-        images = self.images
+        elements = get_gallery_images(self.collection.name)
         context = super(GalleryPage, self).get_context(request)
         page = request.GET.get("page")
-        paginator = Paginator(images, self.images_per_page)
+        paginator = Paginator(elements, self.elements_per_page)
         try:
-            images = paginator.page(page)
+            elements = paginator.page(page)
         except PageNotAnInteger:
-            images = paginator.page(1)
+            elements = paginator.page(1)
         except EmptyPage:
-            images = paginator.page(paginator.num_pages)
-        context["gallery_images"] = images
+            elements = paginator.page(paginator.num_pages)
+        context["elements"] = elements
         return context
 
     class Meta:
@@ -97,14 +79,5 @@ class GallerySectionPage(Page):
         verbose_name_plural = "Разделы галереи"
 
 
-def get_gallery_images(
-    collection: Collection,
-    page: GalleryPage | None = None,
-) -> ImageQuerySet:
-    images = get_image_model().objects.filter(collection__name=collection)
-    if page:
-        if page.order_images_by == 1:
-            images = images.order_by("title")
-        elif page.order_images_by == 2:
-            images = images.order_by("-created_at")
-    return images
+def get_gallery_images(collection: Collection) -> QuerySet:
+    return get_image_model().objects.filter(collection__name=collection)

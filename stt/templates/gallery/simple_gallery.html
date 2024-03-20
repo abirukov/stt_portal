@@ -1,7 +1,7 @@
 {% load static wagtailimages_tags wagtailsimplegallery_tags %}
 
   <div class="row gallery-container">
-  {% for img in gallery_images %}
+  {% for img in elements %}
     {% image img fill-250x250 as img_thumb %}
     <div class="gallery-thumbnail-container col-xs-3">
       <a href="{{ img|original_url }}" title="{{ img_thumb.alt|hide_num_order }}">
@@ -11,10 +11,8 @@
     </div>
   {% endfor %}
   </div>
-    {% if page.use_lightbox or use_lightbox %}
-        <script type="text/javascript">
-            window.addEventListener('load', function() {
-                baguetteBox.run('.gallery-container');
-            });
-        </script>
-    {% endif %}
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            baguetteBox.run('.gallery-container');
+        });
+    </script>
