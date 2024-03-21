@@ -58,9 +58,7 @@ class PaginatedPage(RoutablePageMixin, Page):
         help_text="Сколько элементов будет отображаться на странице",
     )
 
-    content_panels = Page.content_panels + [
-        FieldPanel("elements_per_page"),
-    ]
+    content_panels = [FieldPanel("elements_per_page")]
 
     def get_context(
         self,
@@ -78,6 +76,15 @@ class PaginatedPage(RoutablePageMixin, Page):
 
 class StandardPage(Page):
     subpage_types: list[str] = []
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="Изображение",
+        verbose_name="Изображение",
+    )
     body = StreamField(
         [
             (
@@ -105,6 +112,7 @@ class StandardPage(Page):
         verbose_name="Контент",
     )
     content_panels = Page.content_panels + [
+        FieldPanel("image"),
         FieldPanel("body"),
     ]
 
