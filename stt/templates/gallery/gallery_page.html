@@ -1,40 +1,39 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags navigation_tags %}
 {% block content %}
-  <div class="container gallery-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {% if page.intro_title %}<p class="intro-content">{{ page.intro_title }}</p>{% endif %}
-        {% if page.intro_text %}{{ page.intro_text|richtext }}{% endif %}
-      </div>
-    </div>
-  </div>
-    {% if elements.has_next or elements.has_previous %}
-    <div class="container">
-      <div class="gallery-pagination-container row">
-        <div class="col-sm-2">
-          {% if elements.has_previous %}
-          <a href="?page={{ elements.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">&lt;&lt; Назад</a>
-          {% endif %}
+    <section class="portfolio__section section--padding">
+        <div class="container">
+            <div class="section__heading text-center mb-40">
+                {% if page.intro_title %}
+                    <h2 class="section__heading--maintitle text__secondary mb-10">{{ page.intro_title }}</h2>
+                {% endif %}
+                {% if page.intro_text %}{{ page.intro_text|richtext }}{% endif %}
+            </div>
+            <div class="portfolio__section--inner">
+                <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2 mb--n30">
+                    {% for img in elements %}
+                        {% image img original as img_full %}
+                        {% image img fill-370x263 as img_thumb %}
+                        <div class="col mb-30">
+                            <div class="portfolio__items">
+                                <div class="portfolio__items--thumbnail position__relative">
+                                    <a class="portfolio__items--thumbnail__link glightbox"
+                                       href="{{ img_full.url }}">
+                                        <img class="portfolio__items--thumbnail__img"
+                                             src="{{ img_thumb.url }}" alt="portfolio-img">
+                                        <span class="portfolio__view--icon">
+                                            {% include "includes/icons/portfolio-view-icon.html" %}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% pagination %}
+
+            </div>
         </div>
-        <div class="col-sm-8 text-center">
-          <ul class="gallery-pagination">
-          {% for page in elements.paginator.page_range %}
-            <li class="gallery-pagination-item {% if elements.number == page  %}active{% endif %}">
-              <a class="{% if elements.number == page  %}active{% endif %}" href="?page={{ page }}">{{ page }}</a>
-            </li>
-          {% endfor %}
-          </ul>
-        </div>
-        <div class="col-sm-2 text-right">
-          {% if elements.has_next %}
-          <a href="?page={{ elements.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">Далее &gt;&gt;</a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-    {% endif %}
-  </div>
+    </section>
 {% endblock %}
 

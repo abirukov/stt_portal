@@ -1,7 +1,3 @@
-from typing import Any
-
-from django.core.handlers.wsgi import WSGIRequest
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy as _
@@ -46,7 +42,7 @@ class GalleryPage(PaginatedPage):
         related_name="+",
         help_text=_("Show images in this collection in the gallery view."),
     )
-    content_panels = Page.content_panels + [
+    content_panels = PaginatedPage.content_panels + [
         FieldPanel("skin"),
         FieldPanel("collection"),
         FieldPanel("intro_title"),
@@ -57,24 +53,9 @@ class GalleryPage(PaginatedPage):
         index.SearchField("intro_text"),
     ]
 
-    def get_context(
-        self,
-        request: WSGIRequest,
-        *args: Any,
-        **kwargs: Any,
-    ) -> dict[str, Page]:
-        elements = get_gallery_images(self.collection.name)
-        context = super(GalleryPage, self).get_context(request)
-        page = request.GET.get("page")
-        paginator = Paginator(elements, self.elements_per_page)
-        try:
-            elements = paginator.page(page)
-        except PageNotAnInteger:
-            elements = paginator.page(1)
-        except EmptyPage:
-            elements = paginator.page(paginator.num_pages)
-        context["elements"] = elements
-        return context
+    @property
+    def elements(self) -> QuerySet:
+        return get_gallery_images(self.collection.name)
 
     class Meta:
         verbose_name = "Страница галереи"
