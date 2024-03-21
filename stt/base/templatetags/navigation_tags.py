@@ -32,6 +32,26 @@ def top_menu(
     }
 
 
+@register.inclusion_tag("tags/mobile_menu.html", takes_context=True)
+def mobile_menu(
+    context: RequestContext,
+    parent: Page,
+    calling_page: Page | None = None,
+) -> dict[str, Any]:
+    menuitems = parent.get_children().live().in_menu()
+    for menuitem in menuitems:
+        menuitem.active = (
+            calling_page.url_path.startswith(menuitem.url_path)
+            if calling_page
+            else False
+        )
+    return {
+        "calling_page": calling_page,
+        "menuitems": menuitems,
+        "request": context["request"],
+    }
+
+
 @register.inclusion_tag("tags/breadcrumbs.html", takes_context=True)
 def breadcrumbs(context: RequestContext) -> dict[str, Any]:
     self = context.get("self")

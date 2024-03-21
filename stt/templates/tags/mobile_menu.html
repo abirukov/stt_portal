@@ -1,0 +1,10 @@
+{% load navigation_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+<li class="offcanvas__menu_li">
+    <a class="offcanvas__menu_item" href="{% pageurl site_root %}">{{ site_root.title }}</a>
+</li>
+{% for menuitem in menuitems %}
+    <li class="offcanvas__menu_li">
+        <a class="offcanvas__menu_item" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+    </li>
+{% endfor %}
