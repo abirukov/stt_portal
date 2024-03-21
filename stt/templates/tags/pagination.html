@@ -19,25 +19,32 @@
                     <li>
                 {% endif %}
                 {% for page in elements.paginator.page_range %}
-                    <li class="gallery-pagination-item {% if elements.number == page %}active{% endif %}">
-                        <a class="{% if elements.number == page %}active{% endif %}"
-                           href="?page={{ page }}"
-                        >
-                            {{ page }}
-                        </a>
+                    <li class="pagination__list">
+                        {% if elements.number == page %}
+                            <span class="pagination__item pagination__item--current">{{ page }}</span>
+                        {% else %}
+                            <a class="pagination__item link"
+                               href="?page={{ page }}"
+                            >
+                                {{ page }}
+                            </a>
+                        {% endif %}
                     </li>
                 {% endfor %}
                 {% if elements.has_next %}
-                    <a href="?page={{ elements.next_page_number }}
-                        {% for key,value in request.GET.items %}
-                            {% if key != 'page' %}
-                                &amp;{{ key }}={{ value }}
-                            {% endif %}
-                        {% endfor %}
-                    ">
-                        {% include "includes/icons/pagination/right_arrow.html" %}
-                        <span class="visually-hidden">pagination arrow</span>
-                    </a>
+                    <li class="pagination__list">
+                        <a class="pagination__item--arrow  link" 
+                           href="?page={{ elements.next_page_number }}
+                            {% for key,value in request.GET.items %}
+                                {% if key != 'page' %}
+                                    &amp;{{ key }}={{ value }}
+                                {% endif %}
+                            {% endfor %}
+                        ">
+                            {% include "includes/icons/pagination/right_arrow.html" %}
+                            <span class="visually-hidden">pagination arrow</span>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
         </nav>
