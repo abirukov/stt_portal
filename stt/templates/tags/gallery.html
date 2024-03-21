@@ -2,7 +2,7 @@
 
 {% for img in images %}
     {% image img original as image_original %}
-    {% image img width-370 height-250 as blog_image %}
+    {% image img fill-370x263 as blog_image %}
     <div class="col-lg-4 col-md-6">
         <div class="blog-item mt-40">
             <div class="blog-thumb">
@@ -19,16 +19,3 @@
     </div>
 
 {% endfor %}
-
-<!-- start pagination area -->
-<div class="col-12">
-    <div class="paginatoin-area text-center mt-40">
-        <ul class="pagination-box">
-            <li><a class="previous" href="#"><i class="fa fa-angle-left"></i></a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a class="next" href="#"><i class="fa fa-angle-right"></i></a></li>
-        </ul>
-    </div>
-</div>

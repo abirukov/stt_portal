@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags wagtailsimplegallery_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 {% block content %}
   <div class="container gallery-wrapper">
   <div class="container">
@@ -10,9 +10,6 @@
       </div>
     </div>
   </div>
-
-    {% include 'gallery/simple_gallery.html' %}
-    
     {% if elements.has_next or elements.has_previous %}
     <div class="container">
       <div class="gallery-pagination-container row">

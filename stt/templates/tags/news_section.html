@@ -4,7 +4,7 @@
         <div class="blog-item mt-40">
             <div class="blog-thumb">
                 <a href="{% pageurl one_news %}">
-                    {% image one_news.image width-370 height-250 as blog_image %}
+                    {% image one_news.image fill-370x263 as blog_image %}
                     <img src="{{ blog_image.url }}" alt="blog">
                 </a>
             </div>
