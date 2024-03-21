@@ -1,6 +1,7 @@
 from typing import Any
 
 from django.core.handlers.wsgi import WSGIRequest
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
 from django.db.models import QuerySet
 from wagtail.admin.panels import FieldPanel
@@ -66,9 +67,23 @@ class PaginatedPage(RoutablePageMixin, Page):
         *args: Any,
         **kwargs: Any,
     ) -> dict[str, Page]:
+        elements = self.elements
         context = super(PaginatedPage, self).get_context(request)
-        context["elements"] = QuerySet()
+        page = request.GET.get("page")
+        paginator = Paginator(elements, self.elements_per_page)
+        try:
+            elements = paginator.page(page)
+        except PageNotAnInteger:
+            elements = paginator.page(1)
+        except EmptyPage:
+            elements = paginator.page(paginator.num_pages)
+        context["elements"] = elements
+        context["elements_per_page"] = self.elements_per_page
         return context
+
+    @property
+    def elements(self) -> QuerySet:
+        return QuerySet()
 
     class Meta:
         abstract = True

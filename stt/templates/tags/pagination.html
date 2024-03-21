@@ -1,0 +1,45 @@
+{% load navigation_tags wagtailcore_tags %}
+{% if elements.has_next or elements.has_previous %}
+    <div class="pagination__area bg__gray--color">
+        <nav class="pagination justify-content-center">
+            <ul class="pagination__wrapper d-flex align-items-center justify-content-center">
+                {% if elements.has_previous %}
+                    <li class="pagination__list">
+                        <a class="pagination__item--arrow  link"
+                           href="?page={{ elements.previous_page_number }}
+                            {% for key,value in request.GET.items %}
+                                {% if key != 'page' %}
+                                    &amp;{{ key }}={{ value }}
+                                {% endif %}
+                            {% endfor %}
+                        ">
+                            {% include "includes/icons/pagination/left_arrow.html" %}
+                            <span class="visually-hidden">pagination arrow</span>
+                        </a>
+                    <li>
+                {% endif %}
+                {% for page in elements.paginator.page_range %}
+                    <li class="gallery-pagination-item {% if elements.number == page %}active{% endif %}">
+                        <a class="{% if elements.number == page %}active{% endif %}"
+                           href="?page={{ page }}"
+                        >
+                            {{ page }}
+                        </a>
+                    </li>
+                {% endfor %}
+                {% if elements.has_next %}
+                    <a href="?page={{ elements.next_page_number }}
+                        {% for key,value in request.GET.items %}
+                            {% if key != 'page' %}
+                                &amp;{{ key }}={{ value }}
+                            {% endif %}
+                        {% endfor %}
+                    ">
+                        {% include "includes/icons/pagination/right_arrow.html" %}
+                        <span class="visually-hidden">pagination arrow</span>
+                    </a>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}

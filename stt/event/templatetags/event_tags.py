@@ -9,9 +9,5 @@ register = template.Library()
 
 
 @register.inclusion_tag("tags/event_section.html", takes_context=True)
-def event_section(context: RequestContext) -> dict[str, Any]:
-    events = EventPage.objects.all()
-    return {
-        "events": events,
-        "request": context["request"],
-    }
+def event_section(context: RequestContext) -> RequestContext:
+    return context
