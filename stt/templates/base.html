@@ -15,10 +15,11 @@
             | {{ settings.base.SiteSettings.title_suffix }}
         {% endblock %}
     </title>
-    <meta name="description" content="
-
-            
-            {% block search_description %}{% if page.search_description %}{{ page.search_description }}{% endif %}{% endblock %}">
+    <meta name="description" content="           
+            {% block search_description %}
+                {% if page.search_description %}{{ page.search_description }}{% endif %}
+        {% endblock %}
+    ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {# Force all links in the live preview panel to be opened in a new tab #}
@@ -26,31 +27,21 @@
         <base target="_blank">
     {% endif %}
 
-    <link href="https://fonts.googleapis.com/css?family=Sarabun:300,300i,400,400i,500,600,700,800&display=swap"
-          rel="stylesheet">
-    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins/glightbox.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
-    <!-- Font-awesome CSS -->
-    <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css' %}">
-    <!-- Slick slider css -->
-    <link rel="stylesheet" href="{% static 'css/plugins/slick.min.css' %}">
-    <!-- Odometer css -->
-    <link rel="stylesheet" href="{% static 'css/plugins/odometer.min.css' %}">
-    <!-- animate css -->
-    <link rel="stylesheet" href="{% static 'css/plugins/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'css/vendor/baguetteBox.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/vendor/simple-gallery.css' %}">
-    <link rel="stylesheet" href="{% static 'css/vendor/simple-gallery-admin.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
+<body>
+{% block preloader %}
+    {% include "includes/preloader.html" %}
+{% endblock preloader %}
 {% block header %}
     {% include "includes/header.html" %}
 {% endblock header %}
 
 {% block breadcrumbs %}
-    {# breadcrumbs is defined in base/templatetags/navigation_tags.py #}
     {% breadcrumbs %}
 {% endblock breadcrumbs %}
 
@@ -68,27 +59,11 @@
     {% include "includes/footer.html" %}
 {% endblock footer %}
 
-<script src="{% static 'js/vendor/modernizr-3.6.0.min.js' %}"></script>
-<!-- jQuery JS -->
-<script src="{% static 'js/vendor/jquery-3.3.1.min.js' %}"></script>
-<!-- Popper JS -->
-<script src="{% static 'js/vendor/popper.min.js' %}"></script>
-<!-- Bootstrap JS -->
-<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
-<!-- wow js -->
-<script src="{% static 'js/plugins/wow.min.js' %}"></script>
-<!-- slick Slider JS -->
-<script src="{% static 'js/plugins/slick.min.js' %}"></script>
-<!-- odometer js -->
-<script src="{% static 'js/plugins/odometer.min.js' %}"></script>
-<!-- appear js -->
-<script src="{% static 'js/plugins/appear.min.js' %}"></script>
-<!-- mailchimp active js -->
-<script src="{% static 'js/plugins/ajaxchimp.js' %}"></script>
-<!-- waypoint js  -->
-<script src="{% static 'js/plugins/waypoints.min.js' %}"></script>
-<!-- Main JS -->
-<script src="{% static 'js/main.js' %}"></script>
-<script async src="{% static 'js/vendor/baguetteBox.min.js' %}"></script>
+<script src="{% static 'js/vendor/popper.js' %}" defer="defer"></script>
+<script src="{% static 'js/vendor/bootstrap5.min.js' %}" defer="defer"></script>
+<script src="{% static 'js/plugins/swiper-bundle.min.js' %}" defer="defer"></script>
+<script src="{% static 'js/plugins/glightbox.min.js' %}" defer="defer"></script>
+<script src="{% static 'js/script.js' %}" defer="defer"></script>
+
 </body>
 </html>
