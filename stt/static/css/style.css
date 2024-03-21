@@ -7580,7 +7580,6 @@ span.info__list--item-content {
    17. Breadcrumb Css
 */
 .breadcrumb__bg {
-  background: url(../img/banner/breadcrumb-bg.webp);
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: 5%;
@@ -7645,6 +7644,7 @@ span.info__list--item-content {
   .breadcrumb__content--title {
     font-size: 5rem;
     line-height: 6rem;
+    color: var(--white-color);
   }
 }
 
@@ -7652,6 +7652,7 @@ span.info__list--item-content {
   .breadcrumb__content--title {
     font-size: 6rem;
     line-height: 8rem;
+    color: var(--white-color);
   }
 }
 
@@ -7669,11 +7670,13 @@ span.info__list--item-content {
   padding-right: 22px;
   font-size: 16px;
   line-height: 24px;
+  color: var(--white-color);
 }
 
 @media only screen and (min-width: 768px) {
   .breadcrumb__content--menu__items {
     font-size: 18px;
+    color: var(--white-color);
   }
 }
 
