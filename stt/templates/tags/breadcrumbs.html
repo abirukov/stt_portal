@@ -1,15 +1,14 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 
 {% if ancestors %}
-    <section class="breadcrumb__section breadcrumb__bg bg-img"    
+    <section class="breadcrumb__section breadcrumb__bg bg-img"
     {% if page.image is not None %}
-        {% image page.image width-1920 height-500 as page_banner %}
+        {% image breadcrumbs_image width-1920 height-500 as page_banner %}
         data-bg="{{ page_banner.url }}"
     {% else %}
         data-bg="{% static 'img/banner/breadcrumb-bg.webp' %}"
     {% endif %}
     >
-    {% image page.image width-1920 height-500 as page_banner %}
         <div class="container">
             <div class="row row-cols-1">
                 <div class="col">

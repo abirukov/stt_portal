@@ -6431,6 +6431,7 @@ span.info__list--item-content {
 
 .blog__card--thumbnail__img {
   width: 100%;
+  height: 100%;
 }
 
 .blog__card--content {

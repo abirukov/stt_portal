@@ -2,6 +2,7 @@ from typing import Any
 
 from django import template
 from django.template import RequestContext
+from django.apps import apps
 from wagtail.models import Page, Site
 
 register = template.Library()
@@ -59,8 +60,20 @@ def breadcrumbs(context: RequestContext) -> dict[str, Any]:
         ancestors = ()
     else:
         ancestors = Page.objects.ancestor_of(self, inclusive=True).filter(depth__gt=1)
+    breadcrumbs_image = None
+    if len(ancestors) > 1:
+        section_page = ancestors[1]
+        content_type = ancestors[1].content_type
+        section_model = apps.get_model(
+            app_label=content_type.app_label,
+            model_name=content_type.model,
+        )
+        section = section_model.objects.filter(id=section_page.id).first()
+        if section:
+            breadcrumbs_image = section.image
     return {
         "page": self,
         "ancestors": ancestors,
+        "breadcrumbs_image": breadcrumbs_image,
         "request": context["request"],
     }
