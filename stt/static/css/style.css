@@ -2109,36 +2109,8 @@ body.overlay__active::before,
   padding-bottom: 6rem;
 }
 
-@media only screen and (min-width: 768px) {
-  .section--padding {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .section--padding {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .section--padding {
-    padding-top: 9rem;
-    padding-bottom: 9rem;
-  }
-}
-
-@media only screen and (min-width: 1600px) {
-  .section--padding {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-  }
-}
-
 /* Section margin */
-.section--nargin {
+.section--argin {
   margin-top: 6rem;
   margin-bottom: 6rem;
 }
@@ -10221,10 +10193,6 @@ span.info__list--item-content {
     line-height: 4.5rem;
     font-size: 3.7rem;
   }
-}
-
-.blog__post--meta {
-  text-transform: capitalize;
 }
 
 @media only screen and (min-width: 992px) {

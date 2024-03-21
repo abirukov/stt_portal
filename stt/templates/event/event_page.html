@@ -2,80 +2,34 @@
 {% load wagtailimages_tags wagtailcore_tags %}
 
 {% block content %}
-    <section class="blog-area section-padding">
-        <div class="container">
-            <div class="row mtn-40">
-                <div class="col-lg-12 order-1 pr-lg-45">
-                    <!-- blog single post start -->
-                    <div class="blog-item mt-40">
-                        {% image page.image width-870 height-600 as page_image %}
-                        <div class="blog-thumb">
-                            <img src="{{ page_image.url }}" alt="blog thumb">
-                        </div>
-                        <div class="blog-content blog-details">
-                            <h3 class="blog-title">
-                                {{ page.title }}
-                            </h3>
-                            <div class="blog-meta">
-                                25 October, 2019
+    <!-- Start blog details section -->
+    <section class="blog__details--section section--padding">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-1 col-lg-1"></div>
+                <div class="col-xl-10 col-lg-10">
+                    <div class="blog__details--wrapper">
+                        <div class="entry__blog">
+                            <div class="blog__post--header mb-30">
+                                <h2 class="post__header--title mb-15">{{ page.title }}</h2>
+                                <p class="blog__post--meta">
+                                    Дата мероприятия {{ page.start|date:"d.m.Y H:i" }}
+                                    {% if event.end %} - {{ page.end|date:"d.m.Y H:i" }}{% endif %}
                             </div>
-                            {% include_block page.body %}
+                            <div class="blog__thumbnail mb-30">
+                                {% image page.image width-870 height-600 as page_image %}
+                                <img class="blog__thumbnail--img border-radius-10"
+                                     src="{{ page_image.url }}" alt="blog-img">
+                            </div>
+                            <div class="blog__details--content">
+                                {% include_block page.body %}
+                            </div>
                         </div>
                     </div>
-                    <!-- blog single post start -->
-
-                    <!-- comment area start -->
-                    <div class="comment-section section-padding">
-                        <h4>03 Comment</h4>
-                        <ul>
-                            <li>
-                                <div class="author-avatar">
-                                    <img src="assets/img/blog/comment-icon.png" alt="">
-                                </div>
-                                <div class="comment-body">
-                                    <span class="reply-btn"><a href="#">Reply</a></span>
-                                    <h5 class="comment-author">Erik Jhonson</h5>
-                                    <div class="comment-post-date">
-                                        15 Dec, 2019 at 9:15pm
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim maiores
-                                        adipisci optio ex, non pariatur itaque illo sunt?</p>
-                                </div>
-                            </li>
-                            <li class="comment-children">
-                                <div class="author-avatar">
-                                    <img src="assets/img/blog/comment-icon.png" alt="">
-                                </div>
-                                <div class="comment-body">
-                                    <span class="reply-btn"><a href="#">Reply</a></span>
-                                    <h5 class="comment-author">Pitter Looks</h5>
-                                    <div class="comment-post-date">
-                                        20 Nov, 2019 at 9:30am
-                                    </div>
-                                    <p>pariatur itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        maiores
-                                        adipisci optio ex, laboriosam facilis non illo sunt?</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="author-avatar">
-                                    <img src="assets/img/blog/comment-icon.png" alt="">
-                                </div>
-                                <div class="comment-body">
-                                    <span class="reply-btn"><a href="#">Reply</a></span>
-                                    <h5 class="comment-author">Dominic Palma</h5>
-                                    <div class="comment-post-date">
-                                        25 Jan, 2019 at 8:50pm
-                                    </div>
-                                    <p>Enim maiores Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        adipisci optio ex, laboriosam facilis non pariatur itaque illo sunt?</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- comment area end -->
                 </div>
+                <div class="col-xl-1 col-lg-1"></div>
             </div>
         </div>
     </section>
+    <!-- End blog details section -->
 {% endblock content %}
