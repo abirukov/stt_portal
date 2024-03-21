@@ -1,153 +1,277 @@
 {% load navigation_tags wagtailcore_tags wagtailimages_tags static %}
-
-<header class="header-area">
-    <div class="main-header d-none d-lg-block">
-        <!-- header top start -->
-        <div class="header-top theme-bg">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-sm-4">
-                        <div class="header-top-left text-center text-sm-left">
-                            Call us:<a href="tel:+968573979894"> 01254 789 321</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="login-register text-center">
-                            {% if user.is_authenticated %}
-                                <a href="{% url 'account_logout' %}">{{ user.username }}</a>
-                            {% else %}
-                                <a href="{% url 'account_login' %}">Вход</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="header-social-link text-center text-sm-right">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- header top start -->
-
-        <!-- main menu start -->
-        <div class="main-menu-wrapper sticky header-transparent">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-3">
-                        <!-- logo area start -->
-                        <div class="brand-logo">
-                            <a href="{{ request.site.root_url }}">
-                                <img src="{% static 'img/logo/logo.png' %}" alt="brand logo">
-                            </a>
-                        </div>
-                        <!-- logo area end -->
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="main-menu-inner">
-                            <!-- main menu navbar start -->
-                            <nav class="main-menu">
-                                <ul>
-                                    {% get_site_root as site_root %}
-                                    {% top_menu parent=site_root calling_page=self %}
-                                </ul>
-                            </nav>
-                            <!-- main menu navbar end -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- main menu end -->
-    </div>
-
-    <!-- mobile header start -->
-    <!-- mobile header start -->
-    <div class="mobile-header d-lg-none d-md-block sticky">
-        <!--mobile header top start -->
+<!-- Start header area -->
+<header class="header__section">
+    <!-- Start main header -->
+    <div class="main__header position__relative header__sticky">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <div class="mobile-main-header">
-                        <div class="mobile-logo">
-                            <a href="{{ request.site.root_url }}">НИИ СТТ</a>
-                        </div>
-                        <div class="mobile-menu-toggler">
-                            <button class="mobile-menu-btn">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
+            <div class="main__header--inner d-flex justify-content-between align-items-center">
+                <div class="offcanvas__header--menu__open">
+                    <a class="offcanvas__header--menu__open--btn" href="javascript:void(0)" data-offcanvas>
+                        {% include "includes/icons/burger-icon.html" %}
+                        <span class="visually-hidden">Мобильное меню</span>
+                    </a>
                 </div>
-            </div>
-        </div>
-        <!-- mobile header top start -->
-    </div>
-    <!-- mobile header end -->
-    <!-- mobile header end -->
-
-    <!-- offcanvas mobile menu start -->
-    <!-- off-canvas menu start -->
-    <aside class="off-canvas-wrapper">
-        <div class="off-canvas-overlay"></div>
-        <div class="off-canvas-inner-content">
-            <div class="btn-close-off-canvas">
-                <i class="fa fa-close"></i>
-            </div>
-
-            <div class="off-canvas-inner">
-                <!-- search box start -->
-                <div class="search-box-offcanvas">
-                    <form>
-                        <input type="text" placeholder="Search Here...">
-                        <button class="search-btn"><i class="fa fa-search"></i></button>
-                    </form>
+                <div class="main__logo">
+                    <h1 class="main__logo--title"><a class="main__logo--link" href="{{ request.site.root_url }}"><img
+                            class="main__logo--img" src="{% static 'img/logo/nav-logo.webp' %}" alt="logo-img"></a></h1>
                 </div>
-                <!-- search box end -->
-
-                <!-- mobile menu start -->
-                <div class="mobile-navigation">
-                    <!-- mobile menu navigation start -->
-                    <nav>
-                        <ul class="mobile-menu">
+                <div class="header__menu d-none d-lg-block">
+                    <nav class="header__menu--navigation">
+                        <ul class="d-flex">
                             {% get_site_root as site_root %}
                             {% top_menu parent=site_root calling_page=self %}
                         </ul>
                     </nav>
-                    <!-- mobile menu navigation end -->
                 </div>
-                <!-- mobile menu end -->
-
-                <!-- offcanvas widget area start -->
-                <div class="offcanvas-widget-area">
-                    <div class="off-canvas-contact-widget">
-                        <ul>
-                            <li><i class="fa fa-mobile"></i>
-                                <a href="#">0123456789</a>
-                            </li>
-                            <li><i class="fa fa-envelope-o"></i>
-                                <a href="#">info@yourdomain.com</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="off-canvas-social-widget">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                    </div>
+                <div class="header__account">
+                    <ul class="d-flex">
+                        <li class="header__account--items  header__account--search__items">
+                            <a class="header__account--btn search__open--btn" href="javascript:void(0)" data-offcanvas>
+                                {% include "includes/icons/search-icon.html" %}
+                                <span class="visually-hidden">Поиск</span>
+                            </a>
+                        </li>
+                        <li class="header__account--items">
+                            {% if user.is_authenticated %}
+                                <span>{{ user.username }}</span>
+                                <a class="header__account--btn" href="{% url 'account_logout' %}">
+                                    {% include "includes/icons/logout_icon.html" %}
+                                    <span class="visually-hidden">Выход</span>
+                                </a>
+                            {% else %}
+                                <a class="header__account--btn" href="{% url 'account_login' %}">
+                                    {% include "includes/icons/account-icon.html" %}
+                                    <span class="visually-hidden">Войти</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                    </ul>
                 </div>
-                <!-- offcanvas widget area end -->
             </div>
         </div>
-    </aside>
-    <!-- off-canvas menu end -->
-    <!-- offcanvas mobile menu end -->
+    </div>
+    <!-- End main header -->
 
+    <!-- Start Offcanvas header menu -->
+    <div class="offcanvas-header" tabindex="-1">
+        <div class="offcanvas__inner">
+            <div class="offcanvas__logo">
+                <a class="offcanvas__logo_link" href="{{ request.site.root_url }}">
+                    <img src="assets/img/logo/nav-logo.webp" alt="Rokon Logo">
+                </a>
+                <button class="offcanvas__close--btn" data-offcanvas>close</button>
+            </div>
+            <nav class="offcanvas__menu">
+                <ul class="offcanvas__menu_ul">
+                    <li class="offcanvas__menu_li">
+                        <a class="offcanvas__menu_item" href="{{ request.site.root_url }}">Home</a>
+                        <ul class="offcanvas__sub_menu">
+                            <li class="offcanvas__sub_menu_li"><a href="{{ request.site.root_url }}"
+                                                                  class="offcanvas__sub_menu_item">Home One</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="index-2.html" class="offcanvas__sub_menu_item">Home
+                                Two</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="index-3.html" class="offcanvas__sub_menu_item">Home
+                                Three</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="index-4.html" class="offcanvas__sub_menu_item">Home
+                                Four</a></li>
+                        </ul>
+                    </li>
+                    <li class="offcanvas__menu_li">
+                        <a class="offcanvas__menu_item" href="#">Shop</a>
+                        <ul class="offcanvas__sub_menu">
+                            <li class="offcanvas__sub_menu_li">
+                                <a href="#" class="offcanvas__sub_menu_item">Column One</a>
+                                <ul class="offcanvas__sub_menu">
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="shop.html">Shop Left Sidebar</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="shop-right-sidebar.html">Shop Right
+                                        Sidebar</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="shop-grid.html">Shop Grid</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="shop-grid-list.html">Shop Grid List</a>
+                                    </li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="shop-list.html">Shop List</a></li>
+                                </ul>
+                            </li>
+                            <li class="offcanvas__sub_menu_li">
+                                <a href="#" class="offcanvas__sub_menu_item">Column Two</a>
+                                <ul class="offcanvas__sub_menu">
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="product-details.html">Standard
+                                        Product</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="product-video.html">Video Product</a>
+                                    </li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="product-horizontal.html">Product
+                                        Horizontal</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="product-left-sidebar.html">Product Left
+                                        Sidebar</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="product-gallery.html">Product
+                                        Gallery</a></li>
+                                </ul>
+                            </li>
+                            <li class="offcanvas__sub_menu_li">
+                                <a href="#" class="offcanvas__sub_menu_item">Column Three</a>
+                                <ul class="offcanvas__sub_menu">
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="my-account.html">My Account</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="my-account-2.html">My Account 2</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="404.html">404 Page</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="login.html">Login Page</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="faq.html">Faq Page</a></li>
+                                </ul>
+                            </li>
+                            <li class="offcanvas__sub_menu_li">
+                                <a href="#" class="offcanvas__sub_menu_item">Column Four</a>
+                                <ul class="offcanvas__sub_menu">
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="compare.html">Compare Pages</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="cart.html">Cart Page</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="checkout.html">Checkout page</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="wishlist.html">Wishlist Page</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item"
+                                                                          href="404.html">Error Page</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="offcanvas__menu_li">
+                        <a class="offcanvas__menu_item" href="#">Blog</a>
+                        <ul class="offcanvas__sub_menu">
+                            <li class="offcanvas__sub_menu_li"><a href="blog.html" class="offcanvas__sub_menu_item">Blog
+                                Grid</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="blog-details.html"
+                                                                  class="offcanvas__sub_menu_item">Blog Details</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="blog-left-sidebar.html"
+                                                                  class="offcanvas__sub_menu_item">Blog Left Sidebar</a>
+                            </li>
+                            <li class="offcanvas__sub_menu_li"><a href="blog-right-sidebar.html"
+                                                                  class="offcanvas__sub_menu_item">Blog Right
+                                Sidebar</a></li>
+                        </ul>
+                    </li>
+                    <li class="offcanvas__menu_li">
+                        <a class="offcanvas__menu_item" href="#">Pages</a>
+                        <ul class="offcanvas__sub_menu">
+                            <li class="offcanvas__sub_menu_li"><a href="about.html" class="offcanvas__sub_menu_item">About
+                                Us</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="contact.html" class="offcanvas__sub_menu_item">Contact
+                                Us</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="cart.html" class="offcanvas__sub_menu_item">Cart
+                                Page</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="portfolio.html"
+                                                                  class="offcanvas__sub_menu_item">Portfolio Page</a>
+                            </li>
+                            <li class="offcanvas__sub_menu_li"><a href="wishlist.html" class="offcanvas__sub_menu_item">Wishlist
+                                Page</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="login.html" class="offcanvas__sub_menu_item">Login
+                                Page</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="404.html" class="offcanvas__sub_menu_item">Error
+                                Page</a></li>
+                        </ul>
+                    </li>
+                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="about.html">About</a></li>
+                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="offcanvas__account--items">
+                    <a class="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
+                    <span class="offcanvas__account--items__icon"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443" viewBox="0 0 512 512"><path
+                                d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z"
+                                fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="32"/><path
+                                d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z"
+                                fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg> 
+                        </span>
+                        <span class="offcanvas__account--items__label">Login / Register</span>
+                    </a>
+                </div>
+                <div class="language__currency">
+                    <ul class="d-flex align-items-center">
+                        <li class="language__currency--list">
+                            <a class="offcanvas__language--switcher" href="#">
+                                <img class="language__switcher--icon__img" src="assets/img/icon/language-icon.webp"
+                                     alt="currency">
+                                <span>English</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.797" height="9.05"
+                                     viewBox="0 0 9.797 6.05">
+                                    <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z"
+                                          transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
+                                </svg>
+                            </a>
+                            <div class="offcanvas__dropdown--language">
+                                <ul>
+                                    <li class="language__items"><a class="language__text" href="#">France</a></li>
+                                    <li class="language__items"><a class="language__text" href="#">Russia</a></li>
+                                    <li class="language__items"><a class="language__text" href="#">Spanish</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="language__currency--list">
+                            <a class="offcanvas__account--currency__menu" href="#">
+                                <img src="assets/img/icon/usd-icon.webp" alt="currency">
+                                <span>$ US Dollar</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.797" height="9.05"
+                                     viewBox="0 0 9.797 6.05">
+                                    <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z"
+                                          transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
+                                </svg>
+                            </a>
+                            <div class="offcanvas__account--currency__submenu">
+                                <ul>
+                                    <li class="currency__items"><a class="currency__text" href="#">CAD</a></li>
+                                    <li class="currency__items"><a class="currency__text" href="#">CNY</a></li>
+                                    <li class="currency__items"><a class="currency__text" href="#">EUR</a></li>
+                                    <li class="currency__items"><a class="currency__text" href="#">GBP</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- End Offcanvas header menu -->
+
+    <!-- Start serch box area -->
+    <div class="predictive__search--box " tabindex="-1">
+        <div class="predictive__search--box__inner">
+            <h2 class="predictive__search--title">Search Products</h2>
+            <form class="predictive__search--form" action="#">
+                <label>
+                    <input class="predictive__search--input" placeholder="Search Here" type="text">
+                </label>
+                <button class="predictive__search--button" aria-label="search button">
+                    <svg class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg" width="30.51"
+                         height="25.443" viewBox="0 0 512 512">
+                        <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none"
+                              stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="32" d="M338.29 338.29L448 448"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <button class="predictive__search--close__btn" aria-label="search close btn" data-offcanvas>
+            <svg class="predictive__search--close__icon" xmlns="http://www.w3.org/2000/svg" width="40.51"
+                 height="30.443" viewBox="0 0 512 512">
+                <path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="32" d="M368 368L144 144M368 144L144 368"/>
+            </svg>
+        </button>
+    </div>
+    <!-- End serch box area -->
 </header>
