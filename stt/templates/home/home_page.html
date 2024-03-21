@@ -2,30 +2,4 @@
 {% load wagtailimages_tags wagtailcore_tags %}
 
 {% block content %}
-    <!-- hero slider section start -->
-        <section class="hero-slider hero-transparent-bg gray-bg fix">
-            <div class="hero-slider-active slick-arrow-style  slick-dot-style">
-                <!-- single slider item start -->
-                <div class="hero-single-slide">
-                    <div class="hero-slider-item">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-xl-5 col-sm-6">
-                                    <div class="hero-slider-content">
-                                        <h1 class="slide-title">{{ page.hero_text }}</h1>
-                                    </div>
-                                </div>
-                                <div class="col-xl-7 col-sm-6">
-                                    <div class="slider-thumb moving-vertical">
-                                        {% image page.image width-500 alt="" %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- single slider item start -->
-            </div>
-        </section>
-        <!-- brand logo section end -->
 {% endblock content %}
