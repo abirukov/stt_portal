@@ -5,8 +5,8 @@
             <div class="blog__card--thumbnail">
                 <a class="blog__card--thumbnail__link display-block" href="{% pageurl gallery %}">
                     <img class="blog__card--thumbnail__img display-block"
-                    {% if gallery.real_image %}
-                        {% image gallery.real_image fill-370x263 as blog_image %}
+                    {% if gallery.skin %}
+                        {% image gallery.skin fill-370x263 as blog_image %}
                         src="{{ blog_image.url }}"
                     {% else %}
                         src="{% static 'img/blog/blog1.webp' %}"
