@@ -1,0 +1,30 @@
+<table class="cart__table--inner mt-5">
+    <thead class="cart__table--header">
+    {% for block in self %}
+        {% if block.block_type == 'header' %}
+            <tr class="cart__table--header__items">
+                <th
+                        class="cart__table--header__list"
+                        colspan="3"
+                        style="text-align: center;"
+                >
+                    {{ block.value }}
+                </th>
+            </tr>
+
+        {% endif %}
+    {% endfor %}
+    <tr class="cart__table--header__items">
+        <th class="cart__table--header__list">Телефон</th>
+        <th class="cart__table--header__list">Рабочее место</th>
+        <th class="cart__table--header__list text-center">Работник</th>
+    </tr>
+    </thead>
+    <tbody class="cart__table--body">
+    {% for block in self %}
+        {% if block.block_type != 'header' %}
+            {{ block }}
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>

@@ -78,13 +78,18 @@ class InternalPhoneBlock(MobilePhoneBlock):
 
 
 class PhoneStreamBlock(StreamBlock):
-    header = CharBlock(required=False, label="Название группы")
+    header = CharBlock(required=True, label="Название группы")
     mobile_phone = MobilePhoneBlock()
     city_phone = CityPhoneBlock()
     internal_phone = InternalPhoneBlock()
 
+    block_counts = {
+        'header': {'min_num': 1, 'max_num': 1},
+    }
+
     class Meta:
         icon = "mobile-alt"
+        template = "blocks/phone_stream_block.html"
         label = "Блок телефонов"
 
 
@@ -96,6 +101,9 @@ class DocumentStreamBlock(StreamBlock):
         required=False,
         help_text="Выберите изображение или pdf для превью",
     )
+    block_counts = {
+        'header': {'min_num': 1, 'max_num': 1},
+    }
 
     class Meta:
         icon = "doc-full"

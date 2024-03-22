@@ -1,0 +1,12 @@
+{% load help_tags %}
+<tr class="cart__table--body__items">
+    <td class="cart__table--body__list">
+        <span class="in__stock">{{ self.phone | city_phone_number }}</span>
+    </td>
+    <td class="cart__table--body__list">
+        <span class="in__stock">{{ self.workplace }}</span>
+    </td>
+    <td class="cart__table--body__list">
+        <span class="in__stock">{{ self.employee }}</span>
+    </td>
+</tr>
