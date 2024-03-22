@@ -77,4 +77,4 @@ class GallerySectionPage(PaginatedPage, SectionPage):
 
 
 def get_gallery_images(collection: Collection) -> QuerySet:
-    return get_image_model().objects.filter(collection__name=collection)
+    return get_image_model().objects.filter(collection__name=collection).order_by('id')
