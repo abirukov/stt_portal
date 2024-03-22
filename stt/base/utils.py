@@ -1,9 +1,9 @@
+from django.apps import apps
 from django.forms.utils import flatatt
 from django.utils.html import format_html, format_html_join
 from django.utils.translation import gettext_lazy as _
 from wagtail.models import Page
 from wagtailmedia.models import AbstractMedia
-from django.apps import apps
 
 
 def format_video_html(item: AbstractMedia) -> str:

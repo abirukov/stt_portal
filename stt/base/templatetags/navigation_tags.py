@@ -1,7 +1,6 @@
 from typing import Any
 
 from django import template
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.template import RequestContext
 from wagtail.models import Page, Site
 
@@ -80,4 +79,3 @@ def breadcrumbs(context: RequestContext) -> dict[str, Any]:
 @register.inclusion_tag("tags/pagination.html", takes_context=True)
 def pagination(context: RequestContext) -> RequestContext:
     return context
-

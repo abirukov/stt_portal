@@ -1,7 +1,7 @@
 from typing import Any
 
 from django.core.handlers.wsgi import WSGIRequest
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models import QuerySet
 from wagtail.admin.panels import FieldPanel

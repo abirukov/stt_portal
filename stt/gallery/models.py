@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 from wagtail.images import get_image_model
-from wagtail.models import Page, Collection
+from wagtail.models import Collection, Page
 from wagtail.search import index
 
 from stt.base.models import PaginatedPage, SectionPage
@@ -77,4 +77,4 @@ class GallerySectionPage(PaginatedPage, SectionPage):
 
 
 def get_gallery_images(collection: Collection) -> QuerySet:
-    return get_image_model().objects.filter(collection__name=collection).order_by('id')
+    return get_image_model().objects.filter(collection__name=collection).order_by("id")
