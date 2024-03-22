@@ -1,32 +1,25 @@
-{% load wagtailimages_tags wagtailcore_tags%}
-{% for one_news in news %}
-    <div class="col-lg-4 col-md-6">
-        <div class="blog-item mt-40">
-            <div class="blog-thumb">
-                <a href="{% pageurl one_news %}">
-                    {% image one_news.image fill-370x263 as blog_image %}
-                    <img src="{{ blog_image.url }}" alt="blog">
+{% load wagtailimages_tags wagtailcore_tags static %}
+{% for one_news in elements %}
+    <div class="col custom-col mb-50">
+        <article class="blog__card">
+            <div class="blog__card--thumbnail">
+                <a class="blog__card--thumbnail__link display-block" href="{% pageurl one_news %}">
+                    <img class="blog__card--thumbnail__img display-block"
+                            {% if one_news.image %}
+                                {% image one_news.image min-370x263 as one_news_image %}
+                         src="{{ one_news_image.url }}"
+                            {% else %}
+                         src="{% static 'img/blog/blog1.webp' %}"
+                            {% endif %}
+                         alt="blog-img">
                 </a>
             </div>
-            <div class="blog-content">
-                <h3 class="blog-title">
+            <div class="blog__card--content blog__card--page--content">
+                <h3 class="blog__card--title">
                     <a href="{% pageurl one_news %}">{{ one_news.title }}</a>
                 </h3>
             </div>
-        </div>
+        </article>
     </div>
 
 {% endfor %}
-
-<!-- start pagination area -->
-<div class="col-12">
-    <div class="paginatoin-area text-center mt-40">
-        <ul class="pagination-box">
-            <li><a class="previous" href="#"><i class="fa fa-angle-left"></i></a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a class="next" href="#"><i class="fa fa-angle-right"></i></a></li>
-        </ul>
-    </div>
-</div>
