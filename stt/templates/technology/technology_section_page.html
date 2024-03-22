@@ -1,11 +1,19 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags wagtailcore_tags %}
+{% load wagtailimages_tags wagtailcore_tags technology_tags navigation_tags %}
 
 {% block content %}
-    <section class="blog-area section-padding">
+    <section class="blog__section section--padding">
         <div class="container">
-            {% include_block page.body %}
-            <div class="row mtn-40">
+            <div class="section__heading text-center mb-50">
+                {% if page.body %}
+                    {% include_block page.body %}
+                {% endif %}
+            </div>
+            <div class="blog__section--inner p-0">
+                <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-2 mb--n50">
+                    {% technology_section %}
+                </div>
+                {% pagination %}
             </div>
         </div>
     </section>

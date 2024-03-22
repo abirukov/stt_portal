@@ -1,0 +1,25 @@
+{% load wagtailimages_tags wagtailcore_tags static %}
+{% for technology in elements %}
+    <div class="col custom-col mb-50">
+        <article class="blog__card">
+            <div class="blog__card--thumbnail">
+                <a class="blog__card--thumbnail__link display-block" href="{% pageurl technology %}">
+                    <img class="blog__card--thumbnail__img display-block"
+                            {% if technology.image %}
+                                {% image technology.image min-370x263 as technology_image %}
+                         src="{{ technology_image.url }}"
+                            {% else %}
+                         src="{% static 'img/blog/blog1.webp' %}"
+                            {% endif %}
+                         alt="blog-img">
+                </a>
+            </div>
+            <div class="blog__card--content blog__card--page--content">
+                <h3 class="blog__card--title">
+                    <a href="{% pageurl technology %}">{{ technology.title }}</a>
+                </h3>
+            </div>
+        </article>
+    </div>
+
+{% endfor %}
