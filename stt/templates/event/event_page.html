@@ -24,6 +24,16 @@
                             <div class="blog__details--content">
                                 {% include_block page.body %}
                             </div>
+                            {% if page.gallery is not None %}
+                                <div class="blog__details--content">
+                                    <a
+                                            class="about__content--btn primary__btn"
+                                            href="{{ page.gallery.url }}"
+                                    >
+                                        Ссылка на страницу галереи {{ page.gallery }}
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

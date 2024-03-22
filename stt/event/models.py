@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import QuerySet
-from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import FieldPanel, PageChooserPanel
 from wagtail.models import Page
 
 from stt.base.models import SectionPage, StandardPage, PaginatedPage
@@ -17,10 +17,20 @@ class EventPage(StandardPage):
         verbose_name="Окончание события",
         help_text="Выберите дату и время окончания события (необязательно)",
     )
+    gallery = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name="Страница галереи",
+        help_text="Выберите связанную страницу галереи",
+    )
 
     content_panels = StandardPage.content_panels + [
         FieldPanel("start"),
         FieldPanel("end"),
+        PageChooserPanel('gallery', 'gallery.GalleryPage'),
     ]
 
     class Meta:
