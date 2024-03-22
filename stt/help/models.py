@@ -1,10 +1,11 @@
+from django.db.models import QuerySet
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import RichTextBlock
 from wagtail.fields import StreamField
 from wagtail.models import Page
 
 from stt.base.blocks import DocumentStreamBlock, ImageBlock, PhoneStreamBlock
-from stt.base.models import SectionPage, StandardPage
+from stt.base.models import SectionPage, StandardPage, PaginatedPage
 from stt.base.rich_text_features import ALL_WITHOUT_FILES
 
 
@@ -90,12 +91,18 @@ class DocumentSamplePage(Page):
         verbose_name_plural = "Страницы шаблона документа"
 
 
-class HelpSectionPage(SectionPage):
+class HelpSectionPage(PaginatedPage, SectionPage):
     subpage_types: list[str] = [
         "help.HelpPage",
         "help.PhonesPage",
         "help.DocumentSamplePage",
     ]
+
+    content_panels = SectionPage.content_panels + PaginatedPage.content_panels
+
+    @property
+    def elements(self) -> QuerySet:
+        return self.get_children().order_by("last_published_at")
 
     class Meta:
         verbose_name = "Раздел справки"

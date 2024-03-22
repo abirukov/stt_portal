@@ -1,0 +1,25 @@
+{% load wagtailimages_tags wagtailcore_tags static %}
+{% for help_element in elements %}
+    <div class="col custom-col mb-50">
+        <article class="blog__card">
+            <div class="blog__card--thumbnail">
+                <a class="blog__card--thumbnail__link display-block" href="{% pageurl help_element %}">
+                    <img class="blog__card--thumbnail__img display-block"
+                            {% if help_element.image %}
+                                {% image help_element.image min-370x263 as help_element_image %}
+                         src="{{ help_element_image.url }}"
+                            {% else %}
+                         src="{% static 'img/blog/blog1.webp' %}"
+                            {% endif %}
+                         alt="blog-img">
+                </a>
+            </div>
+            <div class="blog__card--content blog__card--page--content">
+                <h3 class="blog__card--title">
+                    <a href="{% pageurl help_element %}">{{ help_element.title }}</a>
+                </h3>
+            </div>
+        </article>
+    </div>
+
+{% endfor %}
