@@ -1,6 +1,6 @@
 {% load wagtailimages_tags %}
 <div class="swiper-slide ">
-    {% image self.image fill-1920x800 as slide_image %}
+    {% image self.image fill-1920x600 as slide_image %}
     <div 
             class="hero__slider--items home2__slider--items__bg one"
             style="background: url('{{ slide_image.url }}')"
