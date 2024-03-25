@@ -1,6 +1,8 @@
-from django.db import models
 from wagtail.admin.panels import FieldPanel
+from wagtail.fields import StreamField
 from wagtail.models import Page
+
+from stt.home.blocks import HeroSlide
 
 
 class HomePage(Page):
@@ -13,23 +15,15 @@ class HomePage(Page):
         "technology.TechnologySectionPage",
     ]
 
-    image = models.ForeignKey(
-        "wagtailimages.Image",
+    hero_slider = StreamField(
+        [("slide", HeroSlide(label="Слайд"))],
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-        help_text="Homepage image",
-    )
-    hero_text = models.CharField(
-        max_length=255,
-        help_text="Write an introduction for the bakery",
-        null=True,
+        verbose_name="Слайдер",
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel("image"),
-        FieldPanel("hero_text"),
+        FieldPanel("hero_slider"),
     ]
 
     def __str__(self) -> str:

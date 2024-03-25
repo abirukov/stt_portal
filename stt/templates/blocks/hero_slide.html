@@ -1,0 +1,28 @@
+{% load wagtailimages_tags %}
+<div class="swiper-slide ">
+    <div class="hero__slider--items">
+        <div class="hero__slider--thumbnail">
+            {% image self.image fill-1840x780 as slide_image %}
+            <img class="hero__slider--thumbnail__img display-block"
+                 src="{{ slide_image.url }}" alt="slider img">
+        </div>
+        <div class="slider__content text-center">
+            <h2 class="slider__content--maintitle h1">{{ self.heading }}</h2>
+            <p class="slider__content--desc d-sm-2-none">{{ self.text }}</p>
+            <div class="slider__content--footer d-flex align-items-center justify-content-center">
+                {% if self.page_more %}
+                    <a class="slider__content--btn primary__btn" href="{{ self.page_more.url }}">Подробнее</a>
+                {% endif %}
+                {% if self.video %}
+                    <div class="bideo__play slider__play--bideo">
+                        <a class="bideo__play--icon glightbox"
+                           href="{{ self.video.url }}" data-gallery="video">
+                            {% include "includes/icons/play-video-icon.html" %}
+                            <span class="visually-hidden">Play</span>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -116,7 +116,7 @@ var swiper = new Swiper(".hero__slider--activation", {
     slidesPerView: 1,
     loop: true,
     clickable: true,
-    speed: 500,
+    speed: 3000,
     spaceBetween: 30,
     autoplay: {
         delay: 3000,
