@@ -61,14 +61,13 @@ class PhoneStreamBlock(StreamBlock):
     city_phone = CityPhoneBlock()
     internal_phone = InternalPhoneBlock()
 
-    block_counts = {
-        "header": {"min_num": 1, "max_num": 1},
-    }
-
     class Meta:
         icon = "mobile-alt"
         template = "blocks/phone_stream_block.html"
         label = "Блок телефонов"
+        block_counts = {
+            "header": {"min_num": 1, "max_num": 1},
+        }
 
 
 class DocumentStreamBlock(StreamBlock):
@@ -82,15 +81,15 @@ class DocumentStreamBlock(StreamBlock):
     document_example_pdf = DocumentChooserBlock(
         label="Пример заполнения документа в pdf для превью",
     )
-    block_counts = {
-        "header": {"min_num": 1, "max_num": 1},
-        "document": {"min_num": 1, "max_num": 1},
-        "document_pdf": {"min_num": 0, "max_num": 1},
-        "document_example": {"min_num": 0, "max_num": 1},
-        "document_example_pdf": {"min_num": 0, "max_num": 1},
-    }
 
     class Meta:
         icon = "doc-full"
         template = "blocks/document_stream_block.html"
         label = "Блок документа"
+        block_counts = {
+            "header": {"min_num": 1, "max_num": 1},
+            "document": {"min_num": 1, "max_num": 1},
+            "document_pdf": {"min_num": 0, "max_num": 1},
+            "document_example": {"min_num": 0, "max_num": 1},
+            "document_example_pdf": {"min_num": 0, "max_num": 1},
+        }
