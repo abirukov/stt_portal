@@ -56,8 +56,8 @@ class PhonesPage(Page):
     ]
 
     search_fields = Page.search_fields + [  # Inherit search_fields from Page
-        index.SearchField('body'),
-        index.SearchField('phones'),
+        index.SearchField("body"),
+        index.SearchField("phones"),
     ]
 
     class Meta:
@@ -98,8 +98,8 @@ class DocumentSamplePage(Page):
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('body'),
-        index.SearchField('documents'),
+        index.SearchField("body"),
+        index.SearchField("documents"),
     ]
 
     class Meta:

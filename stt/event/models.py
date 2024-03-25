@@ -34,8 +34,8 @@ class EventPage(StandardPage):
     ]
 
     search_fields = StandardPage.search_fields + [
-        index.SearchField('start'),
-        index.SearchField('end'),
+        index.SearchField("start"),
+        index.SearchField("end"),
     ]
 
     class Meta:
