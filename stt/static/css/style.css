@@ -12815,33 +12815,37 @@ details > summary::-webkit-details-marker {
 }
 
 .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(2):before {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+}
+
+.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(3):before {
+    -webkit-animation-delay: 0.15s;
+    animation-delay: 0.15s;
+}
+
+.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(4):before {
     -webkit-animation-delay: 0.2s;
     animation-delay: 0.2s;
 }
 
-.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(3):before {
+.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(5):before {
+    -webkit-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+}
+
+.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(6):before {
     -webkit-animation-delay: 0.3s;
     animation-delay: 0.3s;
 }
 
-.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(4):before {
+.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(7):before {
+    -webkit-animation-delay: 0.35s;
+    animation-delay: 0.35s;
+}
+.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(7):before {
     -webkit-animation-delay: 0.4s;
     animation-delay: 0.4s;
-}
-
-.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(5):before {
-    -webkit-animation-delay: 0.5s;
-    animation-delay: 0.5s;
-}
-
-.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(6):before {
-    -webkit-animation-delay: 0.6s;
-    animation-delay: 0.6s;
-}
-
-.ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(7):before {
-    -webkit-animation-delay: 0.7s;
-    animation-delay: 0.7s;
 }
 
 .ctn-preloader .loader-section {
@@ -12862,11 +12866,11 @@ details > summary::-webkit-details-marker {
 
 .loaded .animation-preloader {
     opacity: 0;
-    transition: 0.5s ease-out;
-    -webkit-transition: 0.5s ease-out;
-    -moz-transition: 0.5s ease-out;
-    -ms-transition: 0.5s ease-out;
-    -o-transition: 0.5s ease-out;
+    transition: 0.05s ease-out;
+    -webkit-transition: 0.05s ease-out;
+    -moz-transition: 0.05s ease-out;
+    -ms-transition: 0.05s ease-out;
+    -o-transition: 0.05s ease-out;
 }
 
 .loaded .loader-section.section-left {
