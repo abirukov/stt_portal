@@ -4165,6 +4165,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .slider__content--maintitle {
     margin-bottom: 1.4rem;
+    color: var(--white-color);
 }
 
 @media only screen and (min-width: 768px) {
@@ -4184,6 +4185,7 @@ input[type="number"]::-webkit-outer-spin-button {
     line-height: 2.6rem;
     width: 88%;
     margin: 0 auto 1.5rem;
+    color: var(--white-color);
 }
 
 @media only screen and (min-width: 576px) {

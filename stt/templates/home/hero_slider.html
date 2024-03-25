@@ -1,17 +1,11 @@
 <!-- Start slider section -->
-<section class="hero__slider--section slider__section--bg">
-    <div class="hero__slider--inner position__relative">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="hero__slider--activation swiper">
-                        <div class="hero__slider--wrapper swiper-wrapper">
-                            {% for slide in page.hero_slider %}
-                                {{ slide }}
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
+<section class="hero__slider--section slider__section--bg2">
+    <div class="hero__slider--inner style2 position__relative">
+        <div class="hero__slider--activation swiper">
+            <div class="hero__slider--wrapper swiper-wrapper">
+                {% for slide in page.hero_slider %}
+                    {{ slide }}
+                {% endfor %}
             </div>
         </div>
         <div class="slider__pagination swiper-pagination"></div>
