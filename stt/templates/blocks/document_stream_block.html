@@ -1,28 +1,29 @@
 {% load static %}
-<table class="cart__table--inner mt-5">
-    {% for block in self %}
-        {% if block.block_type == 'header' %}
-            <h3 class="mt-5 text-center">
-                {{ block.value }}
-            </h3>
-        {% else %}
-            <div class="text-center">
-                {% if block.block_type|slice:"-4:" != '_pdf' %}
-                    {% for included_block in self %}
-                        {% if included_block.block_type == block.block_type|add:"_pdf" %}
-                            <iframe src="{{ included_block.value.url }}" width="1024" height="1024" allowfullscreen></iframe>
-                        {% endif %}
-                    {% endfor %}
-                    <div class="blog__details--content">
-                        <a
-                                class="about__content--btn primary__btn"
-                                href="{{ block.value.url }}"
-                        >
-                            Скачать файл {{ block.value.file_extension }}
-                        </a>
-                    </div>
-                {% endif %}
-            </div>
-        {% endif %}
-    {% endfor %}
-</table>
+<h3 class="mt-5 text-center">
+    {{ self.header }}
+</h3>
+<div class="text-center">
+    <iframe src="{{ self.document_pdf.url }}" width="1024" height="1024" allowfullscreen></iframe>
+    <div class="blog__details--content">
+        <a
+                class="about__content--btn primary__btn"
+                href="{{ self.document.url }}"
+        >
+            Скачать файл {{ self.document.file_extension }}
+        </a>
+    </div>
+</div>
+{% if self.document_example %}
+    <div class="text-center">
+        <h4 class="mt-5 text-center">Пример заполнения</h4>
+        <iframe src="{{ self.document_example_pdf.url }}" width="1024" height="1024" allowfullscreen></iframe>
+        <div class="blog__details--content">
+            <a
+                    class="about__content--btn primary__btn"
+                    href="{{ self.document_example.url }}"
+            >
+                Скачать файл {{ self.document_example.file_extension }}
+            </a>
+        </div>
+    </div>
+{% endif %}
