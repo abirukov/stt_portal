@@ -55,7 +55,7 @@ class InternalPhoneBlock(MobilePhoneBlock):
         label = "Блок внутреннего телефона"
 
 
-class PhoneStreamBlock(StructBlock):
+class PhoneStreamBlock(StreamBlock):
     header = CharBlock(required=True, label="Название группы")
     mobile_phone = MobilePhoneBlock()
     city_phone = CityPhoneBlock()
@@ -65,6 +65,9 @@ class PhoneStreamBlock(StructBlock):
         icon = "mobile-alt"
         template = "blocks/phone_stream_block.html"
         label = "Блок телефонов"
+        block_counts = {
+            "header": {"min_num": 1, "max_num": 1},
+        }
 
 
 class DocumentBlock(StructBlock):
