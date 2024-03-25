@@ -1,6 +1,6 @@
 from django.db.models import QuerySet
 
-from stt.base.models import SectionPage, StandardPage, PaginatedPage
+from stt.base.models import PaginatedPage, SectionPage, StandardPage
 
 
 class TechnologyPage(StandardPage):

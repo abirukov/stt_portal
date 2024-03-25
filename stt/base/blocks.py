@@ -84,7 +84,7 @@ class PhoneStreamBlock(StreamBlock):
     internal_phone = InternalPhoneBlock()
 
     block_counts = {
-        'header': {'min_num': 1, 'max_num': 1},
+        "header": {"min_num": 1, "max_num": 1},
     }
 
     class Meta:
@@ -95,18 +95,26 @@ class PhoneStreamBlock(StreamBlock):
 
 class DocumentStreamBlock(StreamBlock):
     header = CharBlock(required=False, label="Название документа")
-    document = DocumentChooserBlock(required=True)
-    document_example = DocumentChooserBlock(required=False)
-    document_preview = DocumentChooserBlock(
+    document = DocumentChooserBlock(required=True, label="Оригинал документа")
+    document_pdf = DocumentChooserBlock(label="Оригинал документа в pdf для превью")
+    document_example = DocumentChooserBlock(
         required=False,
-        help_text="Выберите изображение или pdf для превью",
+        label="Пример заполнения документа",
+    )
+    document_example_pdf = DocumentChooserBlock(
+        label="Пример заполнения документа в pdf для превью",
     )
     block_counts = {
-        'header': {'min_num': 1, 'max_num': 1},
+        "header": {"min_num": 1, "max_num": 1},
+        "document": {"min_num": 1, "max_num": 1},
+        "document_pdf": {"min_num": 0, "max_num": 1},
+        "document_example": {"min_num": 0, "max_num": 1},
+        "document_example_pdf": {"min_num": 0, "max_num": 1},
     }
 
     class Meta:
         icon = "doc-full"
+        template = "blocks/document_stream_block.html"
         label = "Блок документа"
 
 
