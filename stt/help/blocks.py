@@ -17,7 +17,7 @@ class MobilePhoneBlock(StructBlock):
 
     class Meta:
         icon = "mobile-alt"
-        template = "blocks/mobile_phone_block.html"
+        template = "help/blocks/mobile_phone_block.html"
         label = "Блок мобильного телефона"
 
 
@@ -34,7 +34,7 @@ class CityPhoneBlock(MobilePhoneBlock):
 
     class Meta:
         icon = "globe"
-        template = "blocks/city_phone_block.html"
+        template = "help/blocks/city_phone_block.html"
         label = "Блок городского телефона"
 
 
@@ -51,7 +51,7 @@ class InternalPhoneBlock(MobilePhoneBlock):
 
     class Meta:
         icon = "home"
-        template = "blocks/internal_phone_block.html"
+        template = "help/blocks/internal_phone_block.html"
         label = "Блок внутреннего телефона"
 
 
@@ -63,7 +63,7 @@ class PhoneStreamBlock(StreamBlock):
 
     class Meta:
         icon = "mobile-alt"
-        template = "blocks/phone_stream_block.html"
+        template = "help/blocks/phone_stream_block.html"
         label = "Блок телефонов"
         block_counts = {
             "header": {"min_num": 1, "max_num": 1},
@@ -73,7 +73,10 @@ class PhoneStreamBlock(StreamBlock):
 class DocumentBlock(StructBlock):
     header = CharBlock(required=False, label="Название документа")
     document = DocumentChooserBlock(required=True, label="Оригинал документа")
-    document_pdf = DocumentChooserBlock(required=False, label="PDF превью (если пусто генерируется автоматически)")
+    document_pdf = DocumentChooserBlock(
+        required=False,
+        label="PDF превью (если пусто генерируется автоматически)",
+    )
     document_example = DocumentChooserBlock(
         required=False,
         label="Пример заполнения документа",
@@ -85,5 +88,5 @@ class DocumentBlock(StructBlock):
 
     class Meta:
         icon = "doc-full"
-        template = "blocks/document_stream_block.html"
+        template = "help/blocks/document_stream_block.html"
         label = "Блок документа"

@@ -14,7 +14,7 @@ class ImageBlock(StructBlock):
 
     class Meta:
         icon = "image"
-        template = "blocks/image_block.html"
+        template = "base/blocks/image_block.html"
         label = "Блок изображения"
 
 

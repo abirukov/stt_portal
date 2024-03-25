@@ -9,7 +9,7 @@ from stt.base.models import Holiday
 register = template.Library()
 
 
-@register.inclusion_tag("tags/holiday.html", takes_context=True)
+@register.inclusion_tag("base/tags/holiday.html", takes_context=True)
 def holiday_tag(context: RequestContext) -> dict[str, Any]:
     today = datetime.date.today()
     holiday = Holiday.objects.filter(

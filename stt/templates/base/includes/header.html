@@ -7,7 +7,7 @@
             <div class="main__header--inner d-flex justify-content-between align-items-center">
                 <div class="offcanvas__header--menu__open">
                     <a class="offcanvas__header--menu__open--btn" href="javascript:void(0)" data-offcanvas>
-                        {% include "includes/icons/burger-icon.html" %}
+                        {% include "base/includes/icons/burger-icon.html" %}
                         <span class="visually-hidden">Мобильное меню</span>
                     </a>
                 </div>
@@ -27,7 +27,7 @@
                     <ul class="d-flex">
                         <li class="header__account--items  header__account--search__items">
                             <a class="header__account--btn search__open--btn" href="javascript:void(0)" data-offcanvas>
-                                {% include "includes/icons/search-icon.html" %}
+                                {% include "base/includes/icons/search-icon.html" %}
                                 <span class="visually-hidden">Поиск</span>
                             </a>
                         </li>
@@ -35,12 +35,12 @@
                             {% if user.is_authenticated %}
                                 <span>{{ user.username }}</span>
                                 <a class="header__account--btn" href="{% url 'account_logout' %}">
-                                    {% include "includes/icons/logout-icon.html" %}
+                                    {% include "base/includes/icons/logout-icon.html" %}
                                     <span class="visually-hidden">Выход</span>
                                 </a>
                             {% else %}
                                 <a class="header__account--btn" href="{% url 'account_login' %}">
-                                    {% include "includes/icons/account-icon.html" %}
+                                    {% include "base/includes/icons/account-icon.html" %}
                                     <span class="visually-hidden">Войти</span>
                                 </a>
                             {% endif %}
@@ -91,12 +91,12 @@
                     >
                 </label>
                 <button class="predictive__search--button" aria-label="search button">
-                    {% include "includes/icons/search_box/search-icon.html" %}
+                    {% include "base/includes/icons/search_box/search-icon.html" %}
                 </button>
             </form>
         </div>
         <button class="predictive__search--close__btn" aria-label="search close btn" data-offcanvas>
-            {% include "includes/icons/search_box/close-icon.html" %}
+            {% include "base/includes/icons/search_box/close-icon.html" %}
         </button>
     </div>
     <!-- End serch box area -->

@@ -35,11 +35,11 @@
 
 <body>
 {% block preloader %}
-    {% include "includes/preloader.html" %}
+    {% include "base/includes/preloader.html" %}
 {% endblock preloader %}
 {% wagtailuserbar %}
 {% block header %}
-    {% include "includes/header.html" %}
+    {% include "base/includes/header.html" %}
 {% endblock header %}
 
 {% block breadcrumbs %}
@@ -57,11 +57,11 @@
 <hr>
 
 {% block footer %}
-    {% include "includes/footer.html" %}
+    {% include "base/includes/footer.html" %}
 {% endblock footer %}
 
 {% block scroll_top_bar %}
-    {% include "includes/scroll_top_bar.html" %}
+    {% include "base/includes/scroll_top_bar.html" %}
 {% endblock scroll_top_bar %}
 
 <script src="{% static 'js/vendor/popper.js' %}" defer="defer"></script>

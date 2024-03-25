@@ -14,7 +14,7 @@ def get_site_root(context: RequestContext) -> Any:
     return Site.find_for_request(context["request"]).root_page
 
 
-@register.inclusion_tag("tags/top_menu.html", takes_context=True)
+@register.inclusion_tag("base/tags/top_menu.html", takes_context=True)
 def top_menu(
     context: RequestContext,
     parent: Page,
@@ -34,7 +34,7 @@ def top_menu(
     }
 
 
-@register.inclusion_tag("tags/mobile_menu.html", takes_context=True)
+@register.inclusion_tag("base/tags/mobile_menu.html", takes_context=True)
 def mobile_menu(
     context: RequestContext,
     parent: Page,
@@ -54,7 +54,7 @@ def mobile_menu(
     }
 
 
-@register.inclusion_tag("tags/breadcrumbs.html", takes_context=True)
+@register.inclusion_tag("base/tags/breadcrumbs.html", takes_context=True)
 def breadcrumbs(context: RequestContext) -> dict[str, Any]:
     self = context.get("self")
     if self is None or self.depth <= 2:
@@ -76,6 +76,6 @@ def breadcrumbs(context: RequestContext) -> dict[str, Any]:
     }
 
 
-@register.inclusion_tag("tags/pagination.html", takes_context=True)
+@register.inclusion_tag("base/tags/pagination.html", takes_context=True)
 def pagination(context: RequestContext) -> RequestContext:
     return context

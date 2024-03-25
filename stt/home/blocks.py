@@ -13,5 +13,5 @@ class HeroSlide(StructBlock):
 
     class Meta:
         icon = "resubmit"
-        template = "blocks/hero_slide.html"
+        template = "home/blocks/hero_slide.html"
         label = "Слайд для главной страницы"

@@ -116,7 +116,7 @@ class StandardPage(Page):
                 EmbedBlock(
                     help_text="Вставьте ссылку на контент, пример https://www.youtube.com/watch?v=SGJFWirQ3ks",
                     icon="media",
-                    template="blocks/embed_block.html",
+                    template="base/blocks/embed_block.html",
                     label="Встраиваемый контент",
                 ),
             ),
@@ -133,7 +133,7 @@ class StandardPage(Page):
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('body'),
+        index.SearchField("body"),
     ]
 
     class Meta:
@@ -171,7 +171,7 @@ class SectionPage(Page):
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('body'),
+        index.SearchField("body"),
     ]
 
     class Meta:
