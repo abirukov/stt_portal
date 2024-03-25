@@ -3,6 +3,9 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.template.response import TemplateResponse
 from wagtail.models import Page
 
+from stt.help.models import PhonesPage
+
+
 # To enable logging of search queries for use with the "Promoted search results" module
 # <https://docs.wagtail.org/en/stable/reference/contrib/searchpromotions.html>
 # uncomment the following line and the lines indicated in the search function
@@ -16,6 +19,7 @@ def search(request: WSGIRequest) -> TemplateResponse:
     # Search
     if search_query:
         search_results = Page.objects.live().search(search_query)
+        # search_results = PhonesPage.objects.live().search(search_query)
     else:
         search_results = Page.objects.none()
 

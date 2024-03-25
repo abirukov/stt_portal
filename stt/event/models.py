@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import QuerySet
 from wagtail.admin.panels import FieldPanel, PageChooserPanel
+from wagtail.search import index
 
 from stt.base.models import PaginatedPage, SectionPage, StandardPage
 
@@ -30,6 +31,11 @@ class EventPage(StandardPage):
         FieldPanel("start"),
         FieldPanel("end"),
         PageChooserPanel("gallery", "gallery.GalleryPage"),
+    ]
+
+    search_fields = StandardPage.search_fields + [
+        index.SearchField('start'),
+        index.SearchField('end'),
     ]
 
     class Meta:

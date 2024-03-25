@@ -6,6 +6,7 @@ from wagtail.blocks import RichTextBlock, StructValue
 from wagtail.documents.models import Document
 from wagtail.fields import StreamField
 from wagtail.models import Page, PageBase
+from wagtail.search import index
 
 from stt.base.blocks import ImageBlock
 from stt.base.models import PaginatedPage, SectionPage, StandardPage
@@ -54,6 +55,11 @@ class PhonesPage(Page):
         FieldPanel("phones"),
     ]
 
+    search_fields = Page.search_fields + [  # Inherit search_fields from Page
+        index.SearchField('body'),
+        index.SearchField('phones'),
+    ]
+
     class Meta:
         verbose_name = "Страница с телефонами"
         verbose_name_plural = "Страницы с телефонами"
@@ -89,6 +95,11 @@ class DocumentSamplePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("body"),
         FieldPanel("documents"),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
+        index.SearchField('documents'),
     ]
 
     class Meta:

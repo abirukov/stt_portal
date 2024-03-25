@@ -10,6 +10,7 @@ from wagtail.contrib.routable_page.models import RoutablePageMixin
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
+from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtailmedia.blocks import AudioChooserBlock
 
@@ -131,6 +132,10 @@ class StandardPage(Page):
         FieldPanel("body"),
     ]
 
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
+    ]
+
     class Meta:
         abstract = True
 
@@ -163,6 +168,10 @@ class SectionPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("image"),
         FieldPanel("body"),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
     ]
 
     class Meta:
