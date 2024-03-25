@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags wagtailcore_tags %}
+{% load wagtailimages_tags wagtailcore_tags home_tags%}
 
 {% block content %}
     {% include "home/hero_slider.html" %}
+    {% event_section %}
 {% endblock content %}

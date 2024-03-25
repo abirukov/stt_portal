@@ -1,0 +1,36 @@
+{% load wagtailimages_tags wagtailcore_tags static %}
+<div class="swiper-slide">
+    <article class="blog__card">
+        <div class="blog__card--thumbnail">
+            <a class="blog__card--thumbnail__link display-block" href="{{ event.url }}">
+                <img
+                        class="blog__card--thumbnail__img display-block"
+                        {% if event.image %}
+                            {% image event.image min-370x263 as event_image %}
+                        src="{{ event_image.url }}"
+                        {% else %}
+                        src="{% static 'img/blog/blog1.webp' %}"
+                        {% endif %}
+                        alt="blog-img">
+            </a>
+        </div>
+        <div class="blog__card--content padding__style2">
+            <ul class="blog__card--meta d-flex justify-content-center">
+                <li class="blog__card--meta__text">
+                    Дата проведения
+                </li>
+                <li class="blog__card--meta__text">
+                    {{ event.start|date:"d.m.Y H:i" }}
+                </li>
+                {% if event.end %}
+                    <li class="blog__card--meta__text">
+                        {{ event.end|date:"d.m.Y H:i" }}
+                    </li>
+                {% endif %}
+            </ul>
+            <h3 class="blog__card--title">
+                <a href="{% pageurl event %}">{{ event.title }}</a>
+            </h3>
+        </div>
+    </article>
+</div>

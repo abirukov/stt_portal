@@ -251,7 +251,6 @@ var productBig = new Swiper(".product__media--preview__horizontal--two", {
 // blog swiper column3 activation
 var swiper = new Swiper(".blog__swiper--activation", {
     slidesPerView: 3,
-    loop: true,
     clickable: true,
     spaceBetween: 30,
     breakpoints: {

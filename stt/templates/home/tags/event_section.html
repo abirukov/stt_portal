@@ -1,0 +1,20 @@
+<!-- Start blog section -->
+{% if events %}
+    <section class="blog__section section--padding">
+        <div class="container">
+            <div class="section__heading text-center mb-50">
+                <h2 class="section__heading--maintitle text__secondary mb-10">Ближайшие мероприятия</h2>
+            </div>
+            <div class="blog__section--inner blog__swiper--activation swiper">
+                <div class="swiper-wrapper">
+                    {% for event in events %}
+                        {% include "home/includes/event.html" %}
+                    {% endfor %}
+                </div>
+                <div class="swiper__nav--btn swiper-button-next"></div>
+                <div class="swiper__nav--btn swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+<!-- End blog section -->
