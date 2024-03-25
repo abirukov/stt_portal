@@ -248,8 +248,36 @@ var productBig = new Swiper(".product__media--preview__horizontal--two", {
 });
 
 
-// blog swiper column3 activation
-var swiper = new Swiper(".blog__swiper--activation", {
+var swiper = new Swiper(".home_page_events__swiper--activation", {
+    slidesPerView: 3,
+    clickable: true,
+    spaceBetween: 30,
+    breakpoints: {
+        1200: {
+            slidesPerView: 3,
+        },
+        992: {
+            slidesPerView: 3,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+        },
+        480: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        0: {
+            slidesPerView: 1,
+        },
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+});
+
+var swiper = new Swiper(".home_page_news__swiper--activation", {
     slidesPerView: 3,
     clickable: true,
     spaceBetween: 30,
