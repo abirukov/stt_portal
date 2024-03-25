@@ -75,9 +75,20 @@
     <div class="predictive__search--box " tabindex="-1">
         <div class="predictive__search--box__inner">
             <h2 class="predictive__search--title">Поиск</h2>
-            <form class="predictive__search--form" action="#">
+            <form
+                    class="predictive__search--form"
+                    action="{% url 'search' %}"
+                    method="get"
+                    role="search"
+            >
                 <label>
-                    <input class="predictive__search--input" placeholder="Введите запрос.." type="text">
+                    <input
+                            class="predictive__search--input"
+                            type="text"
+                            name="query"
+                            name="q"
+                            {% if search_query %} value="{{ search_query }}"{% endif %}
+                    >
                 </label>
                 <button class="predictive__search--button" aria-label="search button">
                     {% include "includes/icons/search_box/search-icon.html" %}

@@ -10964,7 +10964,7 @@ span.info__list--item-content {
 }
 
 .cart__table--header__list {
-    padding: 0 2rem 2rem 0;
+    padding: 2rem;
     text-transform: uppercase;
     text-align: left;
     border-bottom: 1px solid var(--border-color2);
@@ -11002,7 +11002,7 @@ span.info__list--item-content {
 
 .cart__table--body__list {
     border-bottom: 1px solid var(--border-color2);
-    padding: 2rem 2rem 2rem 0;
+    padding: 2rem;
 }
 
 .cart__table--body__list:last-child {

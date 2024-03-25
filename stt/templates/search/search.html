@@ -3,33 +3,61 @@
 
 {% block content %}
     <section class="search_section section-padding">
-        <form action="{% url 'search' %}" method="get">
-            <label>
-                <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-            </label>
-            <input type="submit" value="Поиск" class="button">
-        </form>
+        <div class="search--box">
+            <div class="predictive__search--box__inner">
+                <h2 class="predictive__search--title">Поиск</h2>
+                <form
+                        class="predictive__search--form"
+                        action="{% url 'search' %}"
+                        method="get"
+                        role="search"
+                >
+                    <label>
+                        <input
+                                class="predictive__search--input"
+                                type="text"
+                                name="query"
+                                name="q"
+                                {% if search_query %} value="{{ search_query }}"{% endif %}
+                        >
+                    </label>
+                    <button class="predictive__search--button" aria-label="search button">
+                        {% include "includes/icons/search_box/search-icon.html" %}
+                    </button>
+                </form>
+            </div>
+            <button class="predictive__search--close__btn" aria-label="search close btn" data-offcanvas>
+                {% include "includes/icons/search_box/close-icon.html" %}
+            </button>
+        </div>
     </section>
-{% if search_results %}
-    <ul>
-        {% for result in search_results %}
-        <li>
-            <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-            {% if result.search_description %}
-                {{ result.search_description }}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
+    <!-- Start serch box area -->
 
-    {% if search_results.has_previous %}
-        <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
-    {% endif %}
-    
-    {% if search_results.has_next %}
-        <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
-    {% endif %}
-{% elif search_query %}
-    Ничего не найдено
-{% endif %}
+    <!-- End serch box area -->
+    <section class="search_section section-padding">
+        <div class="predictive__search--box__inner">
+            {% if search_results %}
+                <ul>
+                    {% for result in search_results %}
+                        <li>
+                            <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
+                            {% if result.search_description %}
+                                {{ result.search_description }}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                {% if search_results.has_previous %}
+                    <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                {% if search_results.has_next %}
+                    <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
+                {% endif %}
+            {% elif search_query %}
+                Ничего не найдено
+            {% endif %}
+        </div>
+    </section>
 {% endblock %}
