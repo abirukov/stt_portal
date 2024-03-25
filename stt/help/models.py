@@ -7,10 +7,11 @@ from wagtail.documents.models import Document
 from wagtail.fields import StreamField
 from wagtail.models import Page, PageBase
 
-from stt.base.blocks import DocumentStreamBlock, ImageBlock, PhoneStreamBlock
+from stt.base.blocks import ImageBlock
 from stt.base.models import PaginatedPage, SectionPage, StandardPage
 from stt.base.rich_text_features import ALL_WITHOUT_FILES
 from stt.base.utils import convert_to_pdf, create_document
+from stt.help.blocks import DocumentStreamBlock, PhoneStreamBlock
 
 
 class HelpPage(StandardPage):

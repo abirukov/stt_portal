@@ -35,7 +35,7 @@
                             {% if user.is_authenticated %}
                                 <span>{{ user.username }}</span>
                                 <a class="header__account--btn" href="{% url 'account_logout' %}">
-                                    {% include "includes/icons/logout_icon.html" %}
+                                    {% include "includes/icons/logout-icon.html" %}
                                     <span class="visually-hidden">Выход</span>
                                 </a>
                             {% else %}
