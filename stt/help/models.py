@@ -144,7 +144,8 @@ def handle_document(document: StructValue) -> None:
             continue
         if value.file_extension in ["doc", "docx"] and pdf_value is None:
             sample_pdf = create_sample_pdf(value)
-            assert sample_pdf
+            if sample_pdf is None:
+                return None
             document[f"{document_field}_pdf"] = sample_pdf
         elif value.file_extension == "pdf" and pdf_value is None:
             document[f"{document_field}_pdf"] = value
