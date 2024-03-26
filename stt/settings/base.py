@@ -19,7 +19,6 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 ALLOWED_HOSTS: list[str | None] = config.allowed_hosts
 SECRET_KEY = config.secret_key
-DEBUG = config.debug
 
 CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in config.allowed_hosts]
 # Quick-start development settings - unsuitable for production
@@ -210,3 +209,5 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 DRAL_CHECK_DOMAIN = False
 USERSESSIONS_TRACK_ACTIVITY = True
 X_FRAME_OPTIONS = "SAMEORIGIN"
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

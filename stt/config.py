@@ -1,7 +1,6 @@
 import dataclasses
 import json
 import os
-from distutils.util import strtobool
 
 from dotenv import load_dotenv
 
@@ -18,7 +17,6 @@ class AppConfig:
     db_password: str = "postgres"
     allowed_hosts: list[str | None] = dataclasses.field(default_factory=list)
     secret_key: str
-    debug: bool = False
 
 
 def get_config() -> AppConfig:
@@ -30,7 +28,6 @@ def get_config() -> AppConfig:
         db_user=os.environ["DB_USER"],
         db_password=os.environ["DB_PASSWORD"],
         secret_key=os.environ["DJANGO_SECRET_KEY"],
-        debug=bool(strtobool(os.getenv("DEBUG", "false"))),
         allowed_hosts=json.loads(os.environ["ALLOWED_HOSTS"]),
     )
 
