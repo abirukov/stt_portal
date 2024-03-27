@@ -15,6 +15,9 @@ TEXT_FORMAT = [
 ADDITIONAL_TEXT_FORMAT = [
     "code",
     "blockquote",
+    "superscript",
+    "subscript",
+    "strikethrough",
 ]
 
 DOCUMENT_LINK = ["document-link"]
