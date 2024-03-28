@@ -2,8 +2,8 @@
 
 {% if ancestors %}
     <section class="breadcrumb__section breadcrumb__bg bg-img"
-    {% if page.image is not None %}
-        {% image breadcrumbs_image width-1920 height-500 as page_banner %}
+    {% if breadcrumbs_image is not None %}
+        {% image breadcrumbs_image width-1920 height-150 as page_banner %}
         data-bg="{{ page_banner.url }}"
     {% else %}
         data-bg="{% static 'img/banner/breadcrumb-bg.webp' %}"
@@ -13,7 +13,7 @@
             <div class="row row-cols-1">
                 <div class="col">
                     <div class="breadcrumb__content">
-                        <h1 class="breadcrumb__content--title mb-10">{{ page.title }}</h1>
+                        <h1 class="breadcrumb__content--title mb-2">{{ page.title }}</h1>
                         <ul class="breadcrumb__content--menu d-flex">
                             {% for ancestor in ancestors %}
                                 <li class="breadcrumb__content--menu__items">
