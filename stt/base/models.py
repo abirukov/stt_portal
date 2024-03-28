@@ -110,16 +110,7 @@ class StandardPage(Page):
                     label="Текст",
                 ),
             ),
-            ("image_block", ImageBlock()),
-            (
-                "embed_block",
-                EmbedBlock(
-                    help_text="Вставьте ссылку на контент, пример https://www.youtube.com/watch?v=SGJFWirQ3ks",
-                    icon="media",
-                    template="base/blocks/embed_block.html",
-                    label="Встраиваемый контент",
-                ),
-            ),
+            ("image_block", ImageBlock(label="Блок изображения")),
             ("audio", AudioChooserBlock(label="Аудио")),
             ("video", SttVideoChooserBlock(label="Видео")),
         ],
