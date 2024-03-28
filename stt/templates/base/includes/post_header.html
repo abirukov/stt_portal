@@ -1,0 +1,8 @@
+<div class="blog__post--header text-center mb-30">
+    <h2 class="post__header--title mb-15">{{ page.title }}</h2>
+    <p class="blog__post--meta">
+        Опубликовано {{ page.first_published_at|date:"d.m.Y H:i" }}
+        <br>
+        Отредактировано {{ page.last_published_at|date:"d.m.Y H:i" }}
+    </p>
+</div>

@@ -10,15 +10,11 @@
                 <div class="col-xl-10 col-lg-10">
                     <div class="blog__details--wrapper">
                         <div class="entry__blog">
-                            <div class="blog__post--header mb-30">
-                                <h2 class="post__header--title mb-15">{{ page.title }}</h2>
-                                <p class="blog__post--meta">
-                                    Опубликовано {{ page.first_published_at|date:"d.m.Y H:i" }}
-                                    <br>
-                                    Отредактировано {{ page.last_published_at|date:"d.m.Y H:i" }}                                    
-                            </div>
+                            {% block post_header %}
+                                {% include "base/includes/post_header.html" %}
+                            {% endblock post_header %}
                             {% if page.image is not None %}
-                                <div class="blog__thumbnail mb-30">
+                                <div class="blog__thumbnail text-center mb-30">
                                     {% image page.image width-870 height-600 as page_image %}
                                     <img class="blog__thumbnail--img border-radius-10"
                                          src="{{ page_image.url }}" alt="blog-img">
