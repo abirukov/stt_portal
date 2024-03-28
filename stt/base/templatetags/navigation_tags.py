@@ -21,6 +21,12 @@ def top_menu(
     calling_page: Page | None = None,
 ) -> dict[str, Any]:
     menuitems = parent.get_children().live().in_menu()
+    self = context.get("self")
+    if self is None or self.depth <= 2:
+        calling_section = self
+    else:
+        calling_section = Page.objects.ancestor_of(self, inclusive=True).filter(depth__gt=1)[1]
+
     for menuitem in menuitems:
         menuitem.active = (
             calling_page.url_path.startswith(menuitem.url_path)
@@ -29,6 +35,7 @@ def top_menu(
         )
     return {
         "calling_page": calling_page,
+        "calling_section": calling_section,
         "menuitems": menuitems,
         "request": context["request"],
     }

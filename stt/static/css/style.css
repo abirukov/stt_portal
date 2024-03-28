@@ -7611,19 +7611,16 @@ span.info__list--item-content {
     }
 }
 
+.breadcrumb__content--title {
+    font-size: 6rem;
+    line-height: 8rem;
+    color: var(--white-color);
+}
+
 @media only screen and (min-width: 1200px) {
     .breadcrumb__content--title {
         font-size: 5rem;
         line-height: 6rem;
-        color: var(--white-color);
-    }
-}
-
-@media only screen and (min-width: 1600px) {
-    .breadcrumb__content--title {
-        font-size: 6rem;
-        line-height: 8rem;
-        color: var(--white-color);
     }
 }
 
@@ -12729,6 +12726,7 @@ details > summary::-webkit-details-marker {
     -webkit-animation-delay: 0.35s;
     animation-delay: 0.35s;
 }
+
 .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(7):before {
     -webkit-animation-delay: 0.4s;
     animation-delay: 0.4s;
@@ -13492,4 +13490,24 @@ input.quickview__value--number {
     font-style: normal;
     font-weight: 400;
     src: url('../fonts/rubik-v28-cyrillic_cyrillic-ext_latin_latin-ext-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */ url('../fonts/rubik-v28-cyrillic_cyrillic-ext_latin_latin-ext-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+
+.text_shadow {
+    text-shadow: -0 -1px 0 #8E8E8E,
+    0 -1px 0 #8E8E8E,
+    -0 1px 0 #8E8E8E,
+    0 1px 0 #8E8E8E,
+    -1px -0 0 #8E8E8E,
+    1px -0 0 #8E8E8E,
+    -1px 0 0 #8E8E8E,
+    1px 0 0 #8E8E8E,
+    -1px -1px 0 #8E8E8E,
+    1px -1px 0 #8E8E8E,
+    -1px 1px 0 #8E8E8E,
+    1px 1px 0 #8E8E8E,
+    -1px -1px 0 #8E8E8E,
+    1px -1px 0 #8E8E8E,
+    -1px 1px 0 #8E8E8E,
+    1px 1px 0 #8E8E8E;
 }
