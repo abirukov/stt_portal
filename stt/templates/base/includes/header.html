@@ -33,7 +33,7 @@
                         </li>
                         <li class="header__account--items">
                             {% if user.is_authenticated %}
-                                <span>{{ user.username }}</span>
+                                <span class="header__account--username">{{ user.username }}</span>
                                 <a class="header__account--btn" href="{% url 'account_logout' %}">
                                     {% include "base/includes/icons/logout-icon.html" %}
                                     <span class="visually-hidden">Выход</span>
